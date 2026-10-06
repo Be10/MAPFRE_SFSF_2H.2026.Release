@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAPFRE - SAP SuccessFactors 2H 2026 Release</title>
+    <!-- Favicon SVG (Official MAPFRE Logo) -->
+    <link rel="icon" type="image/svg+xml" href="https://www.mapfre.com/contents/ui/theme/resources/images/menu-logo-active-desktop.svg">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome -->
@@ -122,8 +124,8 @@
             <div class="sticky top-24 flex flex-col gap-4">
                 <!-- Summary Dashboard -->
                 <div class="bg-white dark:bg-mapfre-cardDark rounded-xl p-3 shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-300">
-                    <h2 class="text-xs md:text-sm font-bold mb-1 text-gray-900 dark:text-white" id="summaryTitle">Release Highlights</h2>
-                    <p class="text-[0.7rem] text-gray-600 dark:text-gray-300 mb-2 leading-snug" id="summaryText">Explore the most critical updates for the 2H 2026 release.</p>
+                    <h2 class="text-xs md:text-sm font-bold mb-0.5 text-gray-900 dark:text-white" id="summaryTitle">Release Highlights</h2>
+                    <p class="text-[0.65rem] md:text-[0.7rem] text-gray-600 dark:text-gray-300 mb-2 leading-snug" id="summaryText">Explore the most critical updates for the 2H 2026 release.</p>
                     
                     <div class="mt-1.5 pt-1.5 border-t border-gray-100 dark:border-gray-700 flex flex-col gap-1 transition-colors duration-300">
                         <div class="flex justify-between items-center text-[0.65rem]">
@@ -138,7 +140,7 @@
                 </div>
                 
                 <!-- Filter Menu -->
-                <div class="bg-white dark:bg-mapfre-cardDark rounded-xl p-3.5 shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col max-h-[calc(100vh-250px)] transition-colors duration-300">
+                <div class="bg-white dark:bg-mapfre-cardDark rounded-xl p-3 shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col max-h-[calc(100vh-230px)] transition-colors duration-300">
                     <div class="flex flex-row md:flex-col gap-2 md:gap-1 overflow-x-auto md:overflow-y-auto pb-2 md:pb-0 pr-0 md:pr-1 custom-scrollbar snap-x" id="filterContainer">
                         <!-- Buttons injected via JS -->
                     </div>
@@ -212,18 +214,18 @@
     </div>
 
     <div class="fixed bottom-6 right-6 z-50 mr-[calc(100vw-100%)]">
-        <div class="flex flex-row gap-1.5 bg-white/95 dark:bg-mapfre-cardDark/95 backdrop-blur-md px-2 py-1.5 rounded-full shadow-xl border border-gray-200/80 dark:border-gray-700 transition-colors duration-300 items-center">
+        <div class="flex flex-row gap-1 bg-white/95 dark:bg-mapfre-cardDark/95 backdrop-blur-md px-1.5 py-1.5 rounded-full shadow-xl border border-gray-200/80 dark:border-gray-700 transition-colors duration-300 items-center">
             <!-- Theme Toggle Button -->
-            <button onclick="toggleTheme()" id="themeBtn" class="w-9 h-9 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none" title="Toggle Theme">
-                <i class="fa-solid text-base transition-transform duration-300" id="themeIcon"></i>
+            <button onclick="toggleTheme()" id="themeBtn" class="w-11 h-11 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none" title="Toggle Theme">
+                <i class="fa-solid text-xl transition-transform duration-300" id="themeIcon"></i>
             </button>
 
-            <div class="w-[1px] bg-gray-200 dark:bg-gray-700 h-4 my-auto"></div>
+            <div class="w-[1px] bg-gray-200 dark:bg-gray-700 h-5 my-auto"></div>
 
             <!-- Language Toggle Button -->
-            <button onclick="toggleLanguage()" class="px-2.5 h-9 rounded-full flex items-center justify-center gap-1.5 text-xs font-bold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none" title="Toggle Language">
-                <i class="fa-solid fa-globe text-base text-mapfre-red dark:text-red-400"></i>
-                <span id="langText" class="text-sm font-bold">ES</span>
+            <button onclick="toggleLanguage()" class="w-11 h-11 rounded-full flex items-center justify-center gap-1 text-xs font-bold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none" title="Toggle Language">
+                <i class="fa-solid fa-globe text-xl text-mapfre-red dark:text-red-400"></i>
+                <span id="langText" class="text-xs font-bold">ES</span>
             </button>
         </div>
     </div>
@@ -302,7 +304,7 @@
             }
         };
 
-        // 3. Official Release Data (Curated Key Features including Rating changes & Extra Enhancements)
+        // 3. Official Release Data
         const releaseData = [
             {
                 id: 1,
@@ -510,7 +512,7 @@
         ];
 
         function renderFilters() {
-            // Orden estricto solicitado: All Modules, Employee Central, Compensation, Time Tracking, Performance & Goals, y el resto consecutivo
+            // Orden estricto solicitado: All Modules, Employee Central, Compensation, Time Tracking, Performance & Goals, y luego el resto
             const priorityOrder = ['All', 'Employee Central', 'Compensation', 'Time Tracking', 'Performance & Goals', 'Platform', 'Onboarding', 'Learning', 'Extra Enhancements'];
             const availableModules = [...new Set(releaseData.map(item => item.module))];
             
@@ -791,8 +793,8 @@
 
             document.getElementById('lblViewDocs').innerText = uiDict[currentLang].lblViewDocs;
             
-            // Actualizar etiqueta de idioma flotante con el idioma al que cambiará
-            document.getElementById('langText').innerText = currentLang === 'en' ? 'ES' : 'EN';
+            // Actualizar etiqueta de idioma flotante con el idioma al que cambiará (ES en inglés, EN en español)
+            document.getElementById('langText').innerText = uiDict[currentLang].btnLang;
             
             renderFilters();
             renderCards();
