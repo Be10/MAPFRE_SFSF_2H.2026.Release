@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAPFRE - SAP SuccessFactors 2H 2026 Release</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        mapfre: {
+                            red: '#D50000',
+                            darkRed: '#a30000',
+                            gray: '#f5f5f5',
+                            dark: '#1e1e1e',
+                            darker: '#121212',
+                            cardDark: '#2d2d2d'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+        .tag {
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        
+        @media (max-width: 767px) {
+            .custom-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+            .custom-scrollbar {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+
+        /* Animación elegante con retardo escalonado */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="bg-mapfre-gray dark:bg-mapfre-darker text-gray-800 dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
+
+    <header class="bg-mapfre-red text-white sticky top-0 z-40 shadow-md transition-colors duration-300">
+        <div class="w-full px-4 md:px-8 py-3.5 flex justify-between items-center">
+            <!-- Left side: Logos -->
+            <div class="flex items-center">
+                <!-- Desktop Logo (Full) -->
+                <img src="https://www.mapfre.com/contents/ui/theme/resources/images/menu-logo-transparent.svg" 
+                     alt="MAPFRE" 
+                     class="h-7 hidden sm:block">
+                
+                <!-- Mobile Logo (Icon only) -->
+                <img src="https://www.mapfre.com/contents/ui/theme/resources/images/menu-logo-active-desktop.svg" 
+                     alt="MAPFRE" 
+                     class="h-7 block sm:hidden filter brightness-0 invert">
+            </div>
+            
+            <!-- Right side: Title -->
+            <div class="text-right">
+                <h1 class="text-base md:text-xl font-bold tracking-tight" id="headerTitle">SAP SuccessFactors</h1>
+                <p class="text-[0.7rem] md:text-xs font-medium text-red-100" id="headerSubtitle">Release 2H 2026 - Executive Summary</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow w-full px-4 md:px-8 py-8 mx-auto flex flex-col md:flex-row gap-8">
+        
+        <!-- Sidebar Izquierdo: Resumen y Filtros -->
+        <aside class="w-full md:w-1/4 lg:w-1/5 flex-shrink-0">
+            <div class="sticky top-24 flex flex-col gap-4">
+                <!-- Summary Dashboard -->
+                <div class="bg-white dark:bg-mapfre-cardDark rounded-xl p-3 shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-300">
+                    <h2 class="text-xs md:text-sm font-bold mb-1 text-gray-900 dark:text-white" id="summaryTitle">Release Highlights</h2>
+                    <p class="text-[0.7rem] text-gray-600 dark:text-gray-300 mb-2 leading-snug" id="summaryText">Explore the most critical updates for the 2H 2026 release.</p>
+                    
+                    <div class="mt-1.5 pt-1.5 border-t border-gray-100 dark:border-gray-700 flex flex-col gap-1 transition-colors duration-300">
+                        <div class="flex justify-between items-center text-[0.65rem]">
+                            <span class="text-gray-500 dark:text-gray-400 font-medium" id="lblPreview">Preview Release</span>
+                            <span class="font-bold text-gray-800 dark:text-gray-200" id="datePreview">Oct 16, 2026</span>
+                        </div>
+                        <div class="flex justify-between items-center text-[0.65rem]">
+                            <span class="text-gray-500 dark:text-gray-400 font-medium" id="lblProduction">Production Release</span>
+                            <span class="font-bold text-gray-800 dark:text-gray-200" id="dateProduction">Nov 20, 2026</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Filter Menu -->
+                <div class="bg-white dark:bg-mapfre-cardDark rounded-xl p-3.5 shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col max-h-[calc(100vh-250px)] transition-colors duration-300">
+                    <div class="flex flex-row md:flex-col gap-2 md:gap-1 overflow-x-auto md:overflow-y-auto pb-2 md:pb-0 pr-0 md:pr-1 custom-scrollbar snap-x" id="filterContainer">
+                        <!-- Buttons injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="w-full md:w-3/4 lg:w-4/5 flex flex-col gap-5">
+            <!-- Search Bar and Export Button -->
+            <div class="flex gap-3 w-full">
+                <div class="relative w-full">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-magnifying-glass text-gray-400 text-sm"></i>
+                    </div>
+                    <input type="text" id="searchInput" class="w-full pl-11 pr-4 py-3 border border-gray-200 dark:border-gray-700 shadow-sm rounded-xl bg-white dark:bg-mapfre-cardDark text-sm focus:outline-none focus:ring-2 focus:ring-mapfre-red/50 dark:focus:ring-red-500/50 dark:text-white transition-all placeholder-gray-400" placeholder="Search features..." oninput="handleSearch(event)">
+                </div>
+                <button onclick="exportToCSV()" id="btnExport" class="bg-white dark:bg-mapfre-cardDark border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-mapfre-red hover:text-white hover:border-mapfre-red dark:hover:bg-red-500 dark:hover:border-red-500 dark:hover:text-white transition-colors focus:outline-none flex items-center justify-center shrink-0 w-[46px] h-[46px] rounded-xl shadow-sm" title="Export current view to CSV">
+                    <i class="fa-solid fa-download text-sm"></i>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="cardsContainer">
+                <!-- Cards injected via JS -->
+            </div>
+        </div>
+
+    </main>
+
+    <div id="featureModal" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="closeModalOnOutsideClick(event)">
+        <div id="featureModalContent" class="bg-white dark:bg-mapfre-cardDark rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col transform scale-95 transition-all duration-300">
+            <div class="flex justify-between items-start p-5 md:p-6 border-b border-gray-100 dark:border-gray-700 shrink-0">
+                <div class="flex flex-col gap-2">
+                    <span id="modalModule" class="text-xs font-bold text-mapfre-red dark:text-red-400 uppercase tracking-wider"></span>
+                    <div class="flex flex-wrap gap-2 items-center">
+                        <span id="modalType" class="tag whitespace-nowrap shrink-0 w-fit"></span>
+                        <span id="modalCritical" class="tag whitespace-nowrap shrink-0 w-fit hidden"></span>
+                    </div>
+                </div>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-800 dark:hover:text-white transition-colors p-2 focus:outline-none -mt-2 -mr-2">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div class="p-5 md:p-6 overflow-y-auto custom-scrollbar">
+                <h2 id="modalTitle" class="text-xl md:text-2xl font-bold mb-6 text-gray-900 dark:text-white leading-tight flex items-start gap-2"></h2>
+                
+                <h3 id="modalDescTitle" class="text-sm font-bold text-gray-900 dark:text-white mb-2 uppercase tracking-wide"></h3>
+                <p id="modalDesc" class="text-gray-600 dark:text-gray-300 text-sm mb-6 leading-relaxed"></p>
+                
+                <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700 transition-colors duration-300">
+                    <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-2 flex items-center uppercase tracking-wide">
+                        <i class="fa-solid fa-chart-line mr-2 text-mapfre-red dark:text-red-400"></i> 
+                        <span id="modalImpactLabel"></span>
+                    </h3>
+                    <p id="modalImpact" class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed"></p>
+                </div>
+            </div>
+            <div class="px-5 md:px-6 py-4 border-t border-gray-100 dark:border-gray-700 flex justify-between items-center shrink-0 transition-colors duration-300">
+                <div class="flex items-center gap-4 md:gap-6">
+                    <a id="modalExternalLink" href="#" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-mapfre-red dark:text-red-400 hover:text-mapfre-darkRed dark:hover:text-red-300 transition-colors flex items-center gap-1.5 focus:outline-none">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <span id="lblViewDocs">View in SAP Docs</span>
+                    </a>
+                    <button id="btnCopySummary" onclick="copySummary()" class="text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white transition-colors flex items-center gap-1.5 focus:outline-none" title="Copy summary to clipboard">
+                        <i class="fa-regular fa-copy" id="copyIcon"></i>
+                        <span id="lblCopy" class="hidden sm:inline">Copy</span>
+                    </button>
+                </div>
+                <button onclick="closeModal()" id="modalCloseBtn" class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-6 py-2.5 rounded-lg font-bold transition-colors text-sm focus:outline-none">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-6 right-6 z-50 mr-[calc(100vw-100%)]">
+        <div class="flex flex-row gap-1.5 bg-white/95 dark:bg-mapfre-cardDark/95 backdrop-blur-md px-2 py-1.5 rounded-full shadow-xl border border-gray-200/80 dark:border-gray-700 transition-colors duration-300 items-center">
+            <!-- Theme Toggle Button -->
+            <button onclick="toggleTheme()" id="themeBtn" class="w-9 h-9 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none" title="Toggle Theme">
+                <i class="fa-solid text-base transition-transform duration-300" id="themeIcon"></i>
+            </button>
+
+            <div class="w-[1px] bg-gray-200 dark:bg-gray-700 h-4 my-auto"></div>
+
+            <!-- Language Toggle Button -->
+            <button onclick="toggleLanguage()" class="px-2.5 h-9 rounded-full flex items-center justify-center gap-1.5 text-xs font-bold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none" title="Toggle Language">
+                <i class="fa-solid fa-globe text-base text-mapfre-red dark:text-red-400"></i>
+                <span id="langText" class="text-sm font-bold">ES</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 1. App State
+        let currentLang = 'en';
+        let currentFilter = 'All';
+        let currentSearch = '';
+        let currentFilteredData = [];
+        let currentOpenItemId = null;
+
+        // 2. Translatable UI Dictionary
+        const uiDict = {
+            en: {
+                headerTitle: "SAP SuccessFactors",
+                headerSubtitle: "Release 2H 2026 - Executive Summary",
+                summaryTitle: "Release Highlights",
+                summaryText: "Explore the most critical updates for the 2H 2026 release.",
+                filterAll: "All Modules",
+                typeNew: "New",
+                typeChanged: "Changed",
+                lblImpact: "Business Impact",
+                btnLang: "ES",
+                btnReadMore: "View Details",
+                modalDescLabel: "Description",
+                btnClose: "Close",
+                lblCritical: "CRITICAL",
+                lblPreview: "Preview Release",
+                lblProduction: "Production Release",
+                datePreview: "Oct 16, 2026",
+                dateProduction: "Nov 20, 2026",
+                lblViewDocs: "View in SAP Docs",
+                tooltipNew: "Brand new feature introduced in this release.",
+                tooltipChanged: "Modification or enhancement to an existing feature.",
+                tooltipCritical: "Requires immediate attention or configuration.",
+                searchPlaceholder: "Search features...",
+                noResults: "No results found for",
+                tooltipCopy: "Copy summary to clipboard",
+                tooltipCopied: "Copied!",
+                tooltipExport: "Export current view to CSV",
+                lblCopy: "Copy",
+                tooltipTheme: "Switch between Light and Dark mode",
+                tooltipLang: "Switch language between English and Spanish"
+            },
+            es: {
+                headerTitle: "SAP SuccessFactors",
+                headerSubtitle: "Release 2H 2026 - Resumen Ejecutivo",
+                summaryTitle: "Release Highlights",
+                summaryText: "Explore the most critical updates for the 2H 2026 release.",
+                filterAll: "Todos los Módulos",
+                typeNew: "Nuevo",
+                typeChanged: "Modificado",
+                lblImpact: "Impacto en el Negocio",
+                btnLang: "EN",
+                btnReadMore: "Ver Detalles",
+                modalDescLabel: "Descripción",
+                btnClose: "Cerrar",
+                lblCritical: "CRÍTICO",
+                lblPreview: "Release Preview",
+                lblProduction: "Release Producción",
+                datePreview: "16 Oct 2026",
+                dateProduction: "20 Nov 2026",
+                lblViewDocs: "Ver en SAP Docs",
+                tooltipNew: "Característica completamente nueva introducida en este release.",
+                tooltipChanged: "Modificación o mejora a una característica ya existente.",
+                tooltipCritical: "Requiere atención, revisión o configuración inmediata.",
+                searchPlaceholder: "Buscar funciones...",
+                noResults: "No se encontraron resultados para",
+                tooltipCopy: "Copiar resumen al portapapeles",
+                tooltipCopied: "¡Copiado!",
+                tooltipExport: "Exportar vista actual a CSV",
+                lblCopy: "Copiar",
+                tooltipTheme: "Cambiar entre modo claro y oscuro",
+                tooltipLang: "Cambiar idioma entre Inglés y Español"
+            }
+        };
+
+        // 3. Official Release Data (Curated Key Features including Rating changes & Extra Enhancements)
+        const releaseData = [
+            {
+                id: 1,
+                module: "Employee Central",
+                type: "New",
+                isCritical: true,
+                titleEn: "Organizational Modeling in Employee Central",
+                titleEs: "Modelado Organizacional en Employee Central",
+                descEn: "Organizational Modeling is a new feature that enables you to plan, simulate, and implement organizational changes before applying them live.",
+                descEs: "Nueva función que le permite planificar, simular e implementar cambios organizacionales antes de aplicarlos a su estructura real.",
+                impactEn: "Reduces risk during corporate restructuring by allowing HR to visualize impacts before committing changes to the active database.",
+                impactEs: "Reduce el riesgo durante reestructuraciones corporativas al permitir visualizar impactos antes de aplicarlos a la base real.",
+                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/ae3174a9514e44ae800a88608e3b5f3a.html?version=cloud&locale=en-US"
+            },
+            {
+                id: 2,
+                module: "Employee Central",
+                type: "New",
+                isCritical: false,
+                titleEn: "Pay Range Added to Job Information",
+                titleEs: "Rango Salarial Añadido a Información del Puesto",
+                descEn: "Pay range values are now stored directly in Job Information records and calculated once when saved.",
+                descEs: "Los valores de rango salarial ahora se almacenan directamente en los registros de Información del Puesto.",
+                impactEn: "Enhances reporting accuracy and provides immediate visibility into compensation bands at the job level.",
+                impactEs: "Mejora la precisión de los reportes y proporciona visibilidad inmediata de las bandas de compensación.",
+                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/bac088c1319f4e30b7ff20b39403cea0.html?version=cloud&locale=en-US"
+            },
+            {
+                id: 3,
+                module: "Employee Central",
+                type: "New",
+                isCritical: false,
+                titleEn: "New Benefits Console for Administrators",
+                titleEs: "Nueva Consola de Beneficios para Administradores",
+                descEn: "A centralized console that streamlines monitoring of key benefit processes and provides quick access to essential administrative tools.",
+                descEs: "Consola centralizada que agiliza el monitoreo de procesos clave de beneficios y proporciona acceso rápido a herramientas.",
+                impactEn: "Improves HR efficiency in managing global and local benefit programs without navigating multiple menus.",
+                impactEs: "Mejora la eficiencia de RRHH en la gestión de programas de beneficios sin navegar por múltiples menús.",
+                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/d5a0b5b56ac24735951c623bb323e806.html?version=cloud&locale=en-US"
+            },
+            {
+                id: 4,
+                module: "Compensation",
+                type: "New",
+                isCritical: true,
+                titleEn: "Multiple PM Rating and Comp Rating Fields in Compensation Templates",
+                titleEs: "Múltiples Campos de Calificación de Desempeño y Compensación",
+                descEn: "We've enhanced compensation plan templates with additional rating fields for salary and stock plan tabs, giving you more flexibility in structuring calculations.",
+                descEs: "Hemos mejorado las plantillas del plan de compensación con campos de calificación adicionales para salario y acciones, brindando mayor flexibilidad.",
+                impactEn: "Allows MAPFRE to perform more granular and accurate compensation calculations based on diverse performance and compensation ratings.",
+                impactEs: "Permite a MAPFRE realizar cálculos de compensación más granulares y precisos basados en diversas calificaciones.",
+                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/78b44210e4c34abab6b1e6e6a4a5c411.html?version=cloud&locale=en-US"
+            },
+            {
+                id: 5,
+                module: "Time Tracking",
+                type: "New",
+                isCritical: false,
+                titleEn: "Dynamic Shift Assignment",
+                titleEs: "Asignación Dinámica de Turnos",
+                descEn: "Automatically assign shifts to employees based on configurable rules, reducing manual scheduling effort.",
+                descEs: "Asigne turnos automáticamente a los empleados en función de reglas configurables, reduciendo la programación manual.",
+                impactEn: "Optimizes workforce management by automatically aligning employee availability with business needs.",
+                impactEs: "Optimiza la gestión de la fuerza laboral alineando automáticamente la disponibilidad con las necesidades del negocio.",
+                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/7e0c9014d07e4b87bd06df5c646e3a57.html?version=cloud&locale=en-US"
+            },
+            {
+                id: 6,
+                module: "Performance & Goals",
+                type: "Changed",
+                isCritical: false,
+                titleEn: "Manual Competency Ratings Supported Along with Behavior Ratings",
+                titleEs: "Calificaciones Manuales de Competencias Soportadas",
+                descEn: "You can now allow users to manually rate competencies, in addition to rating behaviors, in the latest experience of Performance Management forms.",
+                descEs: "Ahora puede permitir a los usuarios calificar manualmente las competencias, además de calificar comportamientos, en los formularios de Desempeño.",
+                impactEn: "Provides a more holistic view of employee performance by capturing both competency and behavioral feedback accurately.",
+                impactEs: "Proporciona una visión más holística del desempeño del empleado capturando retroalimentación de competencias y comportamiento.",
+                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/a912f868f8e8400fa05902a5d0384c2d.html?version=cloud&locale=en-US"
+            },
+            {
+                id: 7,
+                module: "Performance & Goals",
+                type: "New",
+                isCritical: false,
+                titleEn: "Set Mirrored Distribution in Calibration Templates",
+                titleEs: "Configurar Distribución Reflejada en Calibración",
+                descEn: "Administrators can define mirrored distribution rules for ratings from Performance Management forms in calibration templates, linking two ratings together.",
+                descEs: "Los administradores pueden definir reglas de distribución reflejada para calificaciones de formularios en plantillas de calibración.",
+                impactEn: "Ensures consistency and alignment between different rating scales during the MAPFRE calibration process.",
+                impactEs: "Asegura la coherencia y alineación entre diferentes escalas de calificación durante el proceso de calibración en MAPFRE.",
+                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/9b18691f235145d5ad2dee9b7cd42105.html?version=cloud&locale=en-US"
+            },
+            {
+                id: 8,
+                module: "Platform",
+                type: "New",
+                isCritical: true,
+                titleEn: "Joule Assistants and Agents in Restricted Availability",
+                titleEs: "Asistentes y Agentes de Joule",
+                descEn: "Introducing more AI assistants and agents in restricted availability to navigate system tasks autonomously using SAP Business AI.",
+                descEs: "Introducción de más asistentes y agentes de IA en disponibilidad restringida para navegar tareas del sistema usando SAP Business AI.",
+                impactEn: "Dramatically reduces administrative time by automating routine inquiries and complex transactional workflows.",
+                impactEs: "Reduce drásticamente el tiempo administrativo al automatizar consultas rutinarias y flujos complejos.",
+                url: "https://help.sap.com/docs/PRODUCTS/e9989dc2e5b046ec929e2ad5e8305d24/e37cd6b94aa046fb8e17f0729a7cb0d5.html?version=cloud&locale=en-US"
+            },
+            {
+                id: 9,
+                module: "Onboarding",
+                type: "Changed",
+                isCritical: true,
+                titleEn: "Deprecation of Basic Authentication for Onboarding",
+                titleEs: "Deprecación de Autenticación Básica en Onboarding",
+                descEn: "Basic Authentication with SAP SuccessFactors Onboarding will be removed. All systems must migrate to SAP Identity Authentication Service (IAS).",
+                descEs: "La autenticación básica con Onboarding se eliminará. Todos los sistemas deben migrar a SAP Identity Authentication Service (IAS).",
+                impactEn: "Crucial security mandate. Requires immediate IT roadmap planning to prevent onboarding service disruption.",
+                impactEs: "Mandato de seguridad crucial. Requiere planificación inmediata por parte de TI para evitar interrupciones en el servicio.",
+                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/3c403d525a264081ba54e2388f67154f.html?version=cloud&locale=en-US"
+            },
+            {
+                id: 10,
+                module: "Onboarding",
+                type: "New",
+                isCritical: false,
+                titleEn: "Latest Hiring Experience",
+                titleEs: "Última Experiencia de Contratación",
+                descEn: "HR administrators can hire and rehire employees on a redesigned Add New Employee page built around the latest People Profile with improved validation.",
+                descEs: "Los administradores de RRHH pueden contratar y recontratar empleados en una página rediseñada con validación mejorada.",
+                impactEn: "Accelerates data entry for new hires and minimizes validation errors during the critical onboarding phase.",
+                impactEs: "Acelera la entrada de datos para nuevos empleados y minimiza errores de validación durante la integración.",
+                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/6da9216269fc46b3a51aae19419b51d7.html?version=cloud&locale=en-US"
+            },
+            {
+                id: 11,
+                module: "Learning",
+                type: "New",
+                isCritical: false,
+                titleEn: "Assisted Course Generation in Learning Administration",
+                titleEs: "Generación Asistida de Cursos por IA",
+                descEn: "Use AI-assisted capabilities to generate Learning courses and task checklists rapidly.",
+                descEs: "Utilice capacidades asistidas por IA para generar cursos de aprendizaje y listas de tareas rápidamente.",
+                impactEn: "Lowers the cost and time required to develop internal training materials for MAPFRE employees.",
+                impactEs: "Reduce el costo y el tiempo requerido para desarrollar materiales de capacitación internos en MAPFRE.",
+                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/5f6390091ead45dcb2dfde40accec1a5.html?version=cloud&locale=en-US"
+            },
+            {
+                id: 12,
+                module: "Extra Enhancements",
+                type: "Changed",
+                isCritical: false,
+                subModulesEn: "Platform & Suite",
+                subModulesEs: "Plataforma y Suite",
+                titleEn: "General User Experience & Visual Updates",
+                titleEs: "Actualizaciones Visuales y de UX",
+                descEn: "SAP has deployed numerous minor visual enhancements across the suite, including automatic user experience updates and global headers.",
+                descEs: "SAP ha implementado mejoras visuales menores, incluyendo la habilitación automática de la nueva experiencia de usuario.",
+                impactEn: "Provides a more modern, cohesive, and accessible look-and-feel across all modules for a better employee experience.",
+                impactEs: "Proporciona un aspecto más moderno, cohesivo y accesible en todos los módulos para una mejor experiencia.",
+                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/1217dc9917f1449ca754c3641addb193.html?version=cloud&locale=en-US"
+            },
+            {
+                id: 13,
+                module: "Extra Enhancements",
+                type: "New",
+                isCritical: false,
+                subModulesEn: "Mobile Applications",
+                subModulesEs: "Aplicaciones Móviles",
+                titleEn: "Mobile App Quality of Life Improvements",
+                titleEs: "Mejoras de Calidad de Vida en App Móvil",
+                descEn: "The mobile apps now support Dark Mode automatically based on OS settings and include a new 'Highlights' section.",
+                descEs: "Las apps móviles ahora soportan el Modo Oscuro según la configuración del sistema e incluyen sección de 'Destacados'.",
+                impactEn: "Improves mobile adoption and user comfort for on-the-go workers by adapting natively to device preferences.",
+                impactEs: "Mejora la adopción móvil adaptándose de forma nativa a las preferencias de los dispositivos de los usuarios.",
+                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/3cad3646e8d74c2bbe8e382fd98cad06.html?version=cloud&locale=en-US"
+            },
+            {
+                id: 14,
+                module: "Extra Enhancements",
+                type: "Changed",
+                isCritical: false,
+                subModulesEn: "Story Reports",
+                subModulesEs: "Story Reports",
+                titleEn: "Story Reports Guardrails & Enhancements",
+                titleEs: "Límites y Mejoras en Story Reports",
+                descEn: "Default limits for maximum self-joins and nested IF statements have been increased alongside new aggregation calculations.",
+                descEs: "Se incrementaron los límites para auto-uniones y declaraciones IF anidadas, permitiendo cálculos de agregación.",
+                impactEn: "Allows data analysts to build more complex and powerful cross-module reports without hitting system limitations.",
+                impactEs: "Permite a los analistas construir reportes más complejos sin alcanzar las limitaciones del sistema.",
+                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/033d28fd6e0a467fabbc3537e81d27cb.html?version=cloud&locale=en-US"
+            },
+            {
+                id: 15,
+                module: "Extra Enhancements",
+                type: "Changed",
+                isCritical: false,
+                subModulesEn: "Check Tool",
+                subModulesEs: "Check Tool",
+                titleEn: "Check Tool & System Monitoring",
+                titleEs: "Check Tool y Monitoreo del Sistema",
+                descEn: "Enhanced the Check Tool with periodic execution visibility, expanded quick fix options, and improved table filtering.",
+                descEs: "Mejoras en el Check Tool con visibilidad periódica, opciones ampliadas de corrección rápida y filtrado.",
+                impactEn: "Empowers IT and HR teams to proactively maintain system health and resolve configuration errors faster.",
+                impactEs: "Empodera a los equipos de TI y RRHH para mantener proactivamente la salud del sistema y resolver errores.",
+                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/6cd8ddf0d3fe420b8d4cf9418ac65a9a.html?version=cloud&locale=en-US"
+            }
+        ];
+
+        function renderFilters() {
+            // Orden estricto solicitado: All Modules, Employee Central, Compensation, Time Tracking, Performance & Goals, y el resto consecutivo
+            const priorityOrder = ['All', 'Employee Central', 'Compensation', 'Time Tracking', 'Performance & Goals', 'Platform', 'Onboarding', 'Learning', 'Extra Enhancements'];
+            const availableModules = [...new Set(releaseData.map(item => item.module))];
+            
+            const modules = priorityOrder.filter(m => m === 'All' || availableModules.includes(m));
+            availableModules.forEach(m => { if (!modules.includes(m)) modules.push(m); });
+
+            const container = document.getElementById('filterContainer');
+            container.innerHTML = '';
+
+            const moduleIcons = {
+                'All': 'fa-layer-group',
+                'Employee Central': 'fa-sitemap',
+                'Compensation': 'fa-money-bill-trend-up',
+                'Time Tracking': 'fa-clock',
+                'Performance & Goals': 'fa-bullseye',
+                'Platform': 'fa-server',
+                'Onboarding': 'fa-user-plus',
+                'Learning': 'fa-graduation-cap',
+                'Extra Enhancements': 'fa-plus-circle'
+            };
+
+            modules.forEach(mod => {
+                const btn = document.createElement('button');
+                
+                let displayText = mod;
+                if (mod === 'All') displayText = currentLang === 'en' ? uiDict.en.filterAll : uiDict.es.filterAll;
+                if (mod === 'Extra Enhancements') displayText = currentLang === 'en' ? 'Extra Enhancements' : 'Mejoras Extra';
+                
+                const iconClass = moduleIcons[mod] || 'fa-cube';
+                const count = mod === 'All' ? releaseData.length : releaseData.filter(item => item.module === mod).length;
+                
+                btn.className = `flex-shrink-0 md:w-full text-left px-3 py-2 rounded-full md:rounded-lg text-xs md:text-sm font-medium transition-colors duration-200 focus:outline-none flex justify-between items-center gap-3 md:gap-0 snap-start ${
+                    currentFilter === mod 
+                    ? 'bg-mapfre-red text-white shadow-md' 
+                    : 'bg-gray-100 dark:bg-gray-800 md:bg-transparent text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                }`;
+                
+                if (currentFilter === mod) {
+                    btn.innerHTML = `
+                        <div class="flex items-center whitespace-nowrap md:truncate md:pr-2">
+                            <i class="fa-solid ${iconClass} w-5 text-center mr-1.5 opacity-90"></i>
+                            <span class="whitespace-nowrap md:truncate">${displayText}</span> 
+                        </div>
+                        <span class="bg-white/20 text-white text-[0.65rem] py-0.5 px-2 rounded-full font-bold flex-shrink-0">${count}</span>
+                    `;
+                } else {
+                    btn.innerHTML = `
+                        <div class="flex items-center whitespace-nowrap md:truncate md:pr-2">
+                            <i class="fa-solid ${iconClass} w-5 text-center mr-1.5 opacity-60"></i>
+                            <span class="whitespace-nowrap md:truncate">${displayText}</span> 
+                        </div>
+                        <span class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-[0.65rem] py-0.5 px-2 rounded-full font-bold flex-shrink-0">${count}</span>
+                    `;
+                }
+
+                btn.onclick = () => {
+                    currentFilter = mod;
+                    renderFilters(); 
+                    renderCards();
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        function handleSearch(event) {
+            currentSearch = event.target.value.toLowerCase();
+            renderCards();
+        }
+
+        function renderCards() {
+            const container = document.getElementById('cardsContainer');
+            container.innerHTML = '';
+
+            let filteredData = currentFilter === 'All' 
+                ? releaseData 
+                : releaseData.filter(item => item.module === currentFilter);
+
+            if (currentSearch.trim() !== '') {
+                const searchStr = currentSearch.trim();
+                filteredData = filteredData.filter(item => {
+                    const title = (currentLang === 'en' ? item.titleEn : item.titleEs).toLowerCase();
+                    const desc = (currentLang === 'en' ? item.descEn : item.descEs).toLowerCase();
+                    const moduleName = item.module.toLowerCase();
+                    const typeText = (currentLang === 'es' ? (item.type === 'New' ? uiDict.es.typeNew : uiDict.es.typeChanged) : item.type).toLowerCase();
+                    
+                    return title.includes(searchStr) || desc.includes(searchStr) || moduleName.includes(searchStr) || typeText.includes(searchStr);
+                });
+            }
+
+            // Orden universal: Lo crítico siempre va primero, luego por ID
+            filteredData.sort((a, b) => {
+                if (a.isCritical && !b.isCritical) return -1;
+                if (!a.isCritical && b.isCritical) return 1;
+                return a.id - b.id;
+            });
+            
+            currentFilteredData = filteredData;
+
+            const btnReadMoreText = currentLang === 'en' ? uiDict.en.btnReadMore : uiDict.es.btnReadMore;
+            const lblCriticalText = currentLang === 'en' ? 'CRITICAL' : 'CRÍTICO';
+            const criticalTooltip = currentLang === 'en' ? uiDict.en.tooltipCritical : uiDict.es.tooltipCritical;
+
+            if (filteredData.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full flex flex-col items-center justify-center py-16 px-4 text-center animate-fade-in">
+                        <div class="bg-gray-100 dark:bg-gray-800 rounded-full w-16 h-16 flex items-center justify-center mb-4 transition-colors duration-300">
+                            <i class="fa-solid fa-magnifying-glass text-2xl text-gray-400 dark:text-gray-500"></i>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 text-base font-medium">${uiDict[currentLang].noResults} "<span class="text-gray-900 dark:text-white font-bold">${currentSearch}</span>"</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filteredData.forEach((item, index) => {
+                const title = currentLang === 'en' ? item.titleEn : item.titleEs;
+                
+                const criticalBadge = item.isCritical 
+                    ? `<div class="flex items-center gap-1 text-amber-600 dark:text-amber-400" title="${criticalTooltip}">
+                           <i class="fa-solid fa-star text-xs flex-shrink-0"></i>
+                           <span class="text-[0.65rem] font-bold uppercase tracking-wider leading-none mt-[1px]">${lblCriticalText}</span>
+                       </div>` 
+                    : `<div></div>`;
+                
+                let typeText = item.type;
+                if (currentLang === 'es') {
+                    typeText = item.type === 'New' ? uiDict.es.typeNew : uiDict.es.typeChanged;
+                }
+
+                const typeColor = item.type === 'New' 
+                    ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300' 
+                    : 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300';
+                
+                const typeIcon = item.type === 'New' ? 'fa-plus' : 'fa-pen-to-square';
+                const typeTooltip = item.type === 'New' 
+                    ? (currentLang === 'en' ? uiDict.en.tooltipNew : uiDict.es.tooltipNew) 
+                    : (currentLang === 'en' ? uiDict.en.tooltipChanged : uiDict.es.tooltipChanged);
+
+                let moduleText = item.module === 'Extra Enhancements' && currentLang === 'es' ? 'Mejoras Extra' : item.module;
+                if (item.module === 'Extra Enhancements' && item.subModulesEn) {
+                    moduleText += ` • <span class="text-gray-500 dark:text-gray-400 font-medium">${currentLang === 'en' ? item.subModulesEn : item.subModulesEs}</span>`;
+                }
+
+                const cardHTML = `
+                    <div onclick="openModal(${item.id})" class="bg-white dark:bg-mapfre-cardDark rounded-xl p-4 md:p-5 shadow-sm border border-gray-100 dark:border-gray-700 card-hover flex flex-col h-full cursor-pointer transition-all duration-300 group animate-fade-in" style="opacity: 0; animation-delay: ${index * 0.04}s">
+                        <div class="flex justify-between items-start mb-2 gap-2">
+                            <span class="text-xs font-bold text-mapfre-red dark:text-red-400 uppercase tracking-wider">${moduleText}</span>
+                            <span class="tag whitespace-nowrap shrink-0 ${typeColor}" title="${typeTooltip}">
+                                <i class="fa-solid ${typeIcon} mr-1"></i> ${typeText}
+                            </span>
+                        </div>
+                        
+                        <h3 class="text-base font-bold mb-2 text-gray-900 dark:text-white leading-tight">${title}</h3>
+                        
+                        <div class="mt-auto pt-2 flex justify-between items-center w-full">
+                            ${criticalBadge}
+                            <div class="flex items-center text-sm font-semibold text-mapfre-red dark:text-red-400 ml-auto">
+                                <span>${btnReadMoreText}</span>
+                                <i class="fa-solid fa-arrow-right ml-1.5 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cardHTML;
+            });
+        }
+
+        function openModal(id) {
+            currentOpenItemId = id;
+            const item = releaseData.find(d => d.id === id);
+            if (!item) return;
+
+            const title = currentLang === 'en' ? item.titleEn : item.titleEs;
+            const desc = currentLang === 'en' ? item.descEn : item.descEs;
+            const impact = currentLang === 'en' ? item.impactEn : item.impactEs;
+            
+            let typeText = item.type;
+            if (currentLang === 'es') {
+                typeText = item.type === 'New' ? uiDict.es.typeNew : uiDict.es.typeChanged;
+            }
+
+            let moduleText = item.module === 'Extra Enhancements' && currentLang === 'es' ? 'Mejoras Extra' : item.module;
+            if (item.module === 'Extra Enhancements' && item.subModulesEn) {
+                moduleText += ` • <span class="text-gray-500 dark:text-gray-400 font-medium">${currentLang === 'en' ? item.subModulesEn : item.subModulesEs}</span>`;
+            }
+
+            const typeColor = item.type === 'New' 
+                ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300' 
+                : 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300';
+            const typeIcon = item.type === 'New' ? 'fa-plus' : 'fa-pen-to-square';
+            const typeTooltip = item.type === 'New' ? uiDict[currentLang].tooltipNew : uiDict[currentLang].tooltipChanged;
+
+            document.getElementById('modalModule').innerHTML = moduleText;
+            document.getElementById('modalType').className = `tag whitespace-nowrap shrink-0 w-fit flex items-center ${typeColor}`;
+            document.getElementById('modalType').innerHTML = `<i class="fa-solid ${typeIcon} mr-1.5"></i> ${typeText}`;
+            document.getElementById('modalType').title = typeTooltip;
+            
+            const modalCritical = document.getElementById('modalCritical');
+            if (item.isCritical) {
+                modalCritical.className = 'tag whitespace-nowrap shrink-0 w-fit flex items-center bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300';
+                modalCritical.innerHTML = `<i class="fa-solid fa-star mr-1.5"></i> ${currentLang === 'en' ? uiDict.en.lblCritical : uiDict.es.lblCritical}`;
+                modalCritical.title = uiDict[currentLang].tooltipCritical;
+                modalCritical.classList.remove('hidden');
+            } else {
+                modalCritical.classList.add('hidden');
+                modalCritical.title = "";
+            }
+            
+            document.getElementById('modalTitle').innerHTML = title;
+            document.getElementById('modalDescTitle').innerText = currentLang === 'en' ? uiDict.en.modalDescLabel : uiDict.es.modalDescLabel;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalImpactLabel').innerText = currentLang === 'en' ? uiDict.en.lblImpact : uiDict.es.lblImpact;
+            document.getElementById('modalImpact').innerText = impact;
+            document.getElementById('modalCloseBtn').innerText = currentLang === 'en' ? uiDict.en.btnClose : uiDict.es.btnClose;
+
+            const linkElem = document.getElementById('modalExternalLink');
+            if (item.url) {
+                linkElem.href = item.url;
+                linkElem.style.display = 'flex';
+            } else {
+                linkElem.style.display = 'none';
+            }
+
+            const modal = document.getElementById('featureModal');
+            const modalContent = document.getElementById('featureModalContent');
+            
+            // Compensar scrollbar para evitar salto visual de layout sin ocultarla abruptamente
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+            if (scrollbarWidth > 0) {
+                document.body.style.paddingRight = scrollbarWidth + 'px';
+            }
+            document.body.style.overflow = 'hidden';
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('featureModal');
+            const modalContent = document.getElementById('featureModalContent');
+            
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+                document.body.style.paddingRight = '';
+            }, 250);
+        }
+
+        function closeModalOnOutsideClick(event) {
+            if (event.target.id === 'featureModal') {
+                closeModal();
+            }
+        }
+
+        function updateUI() {
+            document.getElementById('headerTitle').innerText = uiDict[currentLang].headerTitle;
+            document.getElementById('headerSubtitle').innerText = uiDict[currentLang].headerSubtitle;
+            document.getElementById('summaryTitle').innerText = uiDict[currentLang].summaryTitle;
+            document.getElementById('summaryText').innerText = uiDict[currentLang].summaryText;
+            document.getElementById('lblPreview').innerText = uiDict[currentLang].lblPreview;
+            document.getElementById('lblProduction').innerText = uiDict[currentLang].lblProduction;
+            document.getElementById('datePreview').innerText = uiDict[currentLang].datePreview;
+            document.getElementById('dateProduction').innerText = uiDict[currentLang].dateProduction;
+            document.getElementById('lblCopy').innerText = uiDict[currentLang].lblCopy;
+            
+            document.getElementById('searchInput').placeholder = uiDict[currentLang].searchPlaceholder;
+            document.getElementById('btnExport').title = uiDict[currentLang].tooltipExport;
+            document.getElementById('btnCopySummary').title = uiDict[currentLang].tooltipCopy;
+            document.getElementById('themeBtn').title = uiDict[currentLang].tooltipTheme;
+
+            document.getElementById('lblViewDocs').innerText = uiDict[currentLang].lblViewDocs;
+            
+            // Actualizar etiqueta de idioma flotante con el idioma al que cambiará
+            document.getElementById('langText').innerText = currentLang === 'en' ? 'ES' : 'EN';
+            
+            renderFilters();
+            renderCards();
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            updateUI();
+        }
+
+        function updateThemeIcon() {
+            const icon = document.getElementById('themeIcon');
+            
+            if (document.documentElement.classList.contains('dark')) {
+                icon.classList.remove('fa-cloud-sun');
+                icon.classList.add('fa-cloud-moon');
+            } else {
+                icon.classList.remove('fa-cloud-moon');
+                icon.classList.add('fa-cloud-sun');
+            }
+        }
+
+        function initTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            updateThemeIcon();
+            
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (!localStorage.theme) {
+                    if (e.matches) {
+                        document.documentElement.classList.add('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                    }
+                    updateThemeIcon();
+                }
+            });
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateThemeIcon();
+        }
+        
+        function exportToCSV() {
+            if (!currentFilteredData || currentFilteredData.length === 0) return;
+            
+            let csvContent = "data:text/csv;charset=utf-8,\uFEFF"; 
+            
+            const headers = currentLang === 'en' 
+                ? ["Module", "Type", "Critical", "Title", "Description", "Business Impact", "URL"]
+                : ["Módulo", "Tipo", "Crítico", "Título", "Descripción", "Impacto en Negocio", "URL"];
+            csvContent += headers.join(",") + "\r\n";
+            
+            currentFilteredData.forEach(item => {
+                const title = currentLang === 'en' ? item.titleEn : item.titleEs;
+                const desc = currentLang === 'en' ? item.descEn : item.descEs;
+                const impact = currentLang === 'en' ? item.impactEn : item.impactEs;
+                let typeText = item.type;
+                if (currentLang === 'es') {
+                    typeText = item.type === 'New' ? uiDict.es.typeNew : uiDict.es.typeChanged;
+                }
+                const critical = item.isCritical ? (currentLang === 'en' ? "Yes" : "Sí") : "No";
+                
+                const row = [
+                    `"${item.module}"`,
+                    `"${typeText}"`,
+                    `"${critical}"`,
+                    `"${title.replace(/"/g, '""')}"`,
+                    `"${desc.replace(/"/g, '""')}"`,
+                    `"${impact.replace(/"/g, '""')}"`,
+                    `"${item.url || ''}"`
+                ];
+                csvContent += row.join(",") + "\r\n";
+            });
+            
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `MAPFRE_SAP_SFSF_2H2026_${currentLang}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function copySummary() {
+            if (!currentOpenItemId) return;
+            const item = releaseData.find(d => d.id === currentOpenItemId);
+            if (!item) return;
+
+            const title = currentLang === 'en' ? item.titleEn : item.titleEs;
+            const desc = currentLang === 'en' ? item.descEn : item.descEs;
+            const impact = currentLang === 'en' ? item.impactEn : item.impactEs;
+            
+            const summaryText = `[MAPFRE] SAP SuccessFactors 2H 2026 Release\n\nFeature: ${title}\n\n${currentLang === 'en' ? 'Description' : 'Descripción'}:\n${desc}\n\n${currentLang === 'en' ? 'Business Impact' : 'Impacto en el Negocio'}:\n${impact}\n\nURL: ${item.url || 'N/A'}`;
+            
+            const textArea = document.createElement("textarea");
+            textArea.value = summaryText;
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                document.execCommand('copy');
+                const icon = document.getElementById('copyIcon');
+                icon.className = 'fa-solid fa-check text-emerald-500 text-lg';
+                const btn = document.getElementById('btnCopySummary');
+                btn.title = uiDict[currentLang].tooltipCopied;
+                
+                setTimeout(() => {
+                    icon.className = 'fa-regular fa-copy';
+                    btn.title = uiDict[currentLang].tooltipCopy;
+                }, 2000);
+            } catch (err) {
+                console.error('Oops, unable to copy', err);
+            }
+            document.body.removeChild(textArea);
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            updateUI();
+        });
+    </script>
+</body>
+</html>
