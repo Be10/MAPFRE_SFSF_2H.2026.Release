@@ -1,935 +1,608 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAPFRE - SAP SuccessFactors 2H 2026 Release</title>
-    <!-- Favicon SVG (Official MAPFRE Logo) -->
-    <link rel="icon" type="image/svg+xml" href="https://www.mapfre.com/contents/ui/theme/resources/images/menu-logo-active-desktop.svg">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        mapfre: {
-                            red: '#D50000',
-                            darkRed: '#a30000',
-                            gray: '#f5f5f5',
-                            dark: '#1e1e1e',
-                            darker: '#121212',
-                            cardDark: '#2d2d2d'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
-        }
-        .tag {
-            font-size: 0.7rem;
-            padding: 0.15rem 0.5rem;
-            border-radius: 9999px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 600;
-        }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 5px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .dark ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 3px;
-        }
-        .dark ::-webkit-scrollbar-thumb {
-            background: #475569;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-        
-        @media (max-width: 767px) {
-            .custom-scrollbar::-webkit-scrollbar {
-                display: none;
-            }
-            .custom-scrollbar {
-                -ms-overflow-style: none;
-                scrollbar-width: none;
-            }
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MAPFRE USA — SAP SuccessFactors 2H 2026 Release overview for Employee Central, Compensation and Learning." />
+  <meta name="theme-color" content="#e30613" />
+  <meta name="color-scheme" content="light dark" />
+  <script>
+    (() => {
+      try {
+        document.documentElement.dataset.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      } catch (_) {}
+    })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="https://www.mapfre.com/contents/ui/theme/resources/images/menu-logo-active-desktop.svg" />
+  <link rel="shortcut icon" href="https://www.mapfre.com/contents/ui/theme/resources/images/menu-logo-active-desktop.svg" />
+  <title>MAPFRE USA | SAP SuccessFactors 2H 2026 Release</title>
+  <style>
+    :root {
+      --mapfre-red: #e30613;
+      --mapfre-red-2: #c90012;
+      --sap-blue: #0a6ed1;
+      --success: #168447;
+      --warning: #c26a00;
+      --info: #1865a8;
+      --danger: #bc2b38;
+      --bg: #f5f6f8;
+      --surface: #ffffff;
+      --surface-2: #f0f2f5;
+      --surface-3: #e8ebef;
+      --text: #19202a;
+      --muted: #66717e;
+      --border: #dfe3e8;
+      --shadow: 0 10px 35px rgba(19, 30, 45, .08);
+      --shadow-soft: 0 4px 18px rgba(19, 30, 45, .06);
+      --radius: 20px;
+      --radius-sm: 12px;
+      --max: 1480px;
+    }
 
-        /* Animación elegante con retardo escalonado */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-            animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-    </style>
+    html[data-theme="dark"] {
+      --bg: #0e1117;
+      --surface: #171b22;
+      --surface-2: #20262f;
+      --surface-3: #2a313c;
+      --text: #f4f6f8;
+      --muted: #a8b0bc;
+      --border: #303844;
+      --shadow: 0 10px 35px rgba(0, 0, 0, .28);
+      --shadow-soft: 0 4px 18px rgba(0, 0, 0, .22);
+      --success: #57c984;
+      --warning: #ffb55d;
+      --info: #72b8ff;
+      --danger: #ff7c88;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.52;
+      transition: background .25s ease, color .25s ease;
+    }
+    button, input, select { font: inherit; }
+    a { color: inherit; }
+    .shell { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: color-mix(in srgb, var(--mapfre-red) 94%, #111);
+      border-bottom: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 8px 28px rgba(115,0,12,.18);
+    }
+    .topbar-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand-group { display: flex; align-items: center; gap: 16px; min-width: 0; }
+    .mapfre-logo {
+      display: block;
+      width: 174px;
+      height: auto;
+      flex: 0 0 auto;
+    }
+    .divider { width: 1px; height: 30px; background: rgba(255,255,255,.28); }
+    .product-title { min-width: 0; color: #fff; }
+    .product-title strong { display: block; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .product-title span { color: rgba(255,255,255,.74); font-size: 12px; }
+    .actions { display: flex; align-items: center; gap: 9px; }
+    .icon-btn, .action-btn {
+      border: 1px solid rgba(255,255,255,.28);
+      background: rgba(255,255,255,.10);
+      color: #fff;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform .16s ease, border-color .16s ease, background .16s ease;
+      backdrop-filter: blur(8px);
+    }
+    .icon-btn { width: 40px; height: 40px; display: grid; place-items: center; }
+    .action-btn { padding: 9px 14px; font-weight: 700; font-size: 13px; display: inline-flex; align-items: center; gap: 8px; }
+    .icon-btn:hover, .action-btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,.58); background: rgba(255,255,255,.18); }
+    .action-btn.primary { background: #fff; color: var(--mapfre-red); border-color: #fff; }
+    .ui-icon { width: 17px; height: 17px; display: block; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+    .icon-btn .ui-icon { width: 18px; height: 18px; }
+    .theme-toggle {
+      opacity: .76;
+      background: rgba(255,255,255,.045);
+      border-color: rgba(255,255,255,.16);
+      color: rgba(255,255,255,.84);
+    }
+    .theme-toggle:hover {
+      opacity: 1;
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.28);
+    }
+    .theme-toggle .ui-icon { width: 22px; height: 22px; stroke-width: 0; }
+    .theme-toggle .theme-fill { fill: currentColor; stroke: none; }
+    mark.search-hit {
+      background: rgba(227, 6, 19, .21);
+      color: inherit;
+      border-radius: 4px;
+      padding: 0 .08em;
+      box-shadow: inset 0 0 0 1px rgba(227, 6, 19, .28), inset 0 -2px 0 rgba(227, 6, 19, .18);
+    }
+    html[data-theme="dark"] mark.search-hit {
+      background: rgba(255, 92, 104, .36);
+      color: #fff7f8;
+      box-shadow: inset 0 0 0 1px rgba(255, 137, 146, .42);
+    }
+
+    .section-title-row { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin: 34px 0 14px; }
+    .section-title-row h2 { margin: 0; font-size: 28px; letter-spacing: -.035em; }
+    .section-title-row p { margin: 3px 0 0; color: var(--muted); font-size: 14px; }
+
+    .takeaways { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .takeaway { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 21px; box-shadow: var(--shadow-soft); position: relative; overflow: hidden; }
+    .takeaway::before { content:""; position:absolute; inset:0 auto 0 0; width:4px; background: var(--accent, var(--mapfre-red)); }
+    .takeaway .module-tag { color: var(--accent, var(--mapfre-red)); font-weight: 900; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+    .takeaway h3 { margin: 8px 0 7px; font-size: 19px; }
+    .takeaway p { color: var(--muted); margin: 0; font-size: 13px; }
+
+    .controlbar {
+      margin: 28px 0 18px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 18px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow-soft);
+    }
+    .segmented { display: inline-flex; border: 1px solid var(--border); border-radius: 999px; overflow: hidden; background: var(--surface-2); }
+    .segmented button { border: 0; background: transparent; color: var(--muted); padding: 9px 14px; cursor: pointer; font-weight: 800; font-size: 12px; }
+    .segmented button.active { color: #fff; background: var(--mapfre-red); }
+    .search-wrap { flex: 1 1 320px; position: relative; }
+    .search-wrap input { width: 100%; padding: 10px 15px 10px 38px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); border-radius: 999px; outline: none; }
+    .search-wrap .search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); width: 16px; height: 16px; pointer-events: none; }
+    select { border: 1px solid var(--border); background: var(--surface-2); color: var(--text); border-radius: 999px; padding: 9px 33px 9px 13px; font-weight: 700; font-size: 12px; }
+
+    .module-section { margin: 18px 0 38px; scroll-margin-top: 100px; }
+    .module-header {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 13px;
+    }
+    .module-icon { width: 46px; height: 46px; border-radius: 15px; display: grid; place-items: center; color: #fff; background: var(--accent); box-shadow: 0 8px 22px color-mix(in srgb, var(--accent) 24%, transparent); }
+    .module-icon svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+    .module-header h3 { margin: 0; font-size: 24px; letter-spacing: -.03em; }
+    .module-header p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+    .module-count { color: var(--muted); font-weight: 800; font-size: 12px; }
+
+    .cards { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+    .release-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow-soft);
+      transition: transform .17s ease, box-shadow .17s ease, border-color .17s ease;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+    .release-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: color-mix(in srgb, var(--accent) 30%, var(--border)); }
+    .card-top { display: flex; justify-content: space-between; align-items: start; gap: 15px; }
+    .card-kicker { color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-size: 10px; font-weight: 900; }
+    .release-card h4 { margin: 5px 0 0; font-size: 19px; line-height: 1.25; letter-spacing: -.022em; }
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin: 14px 0; }
+    .chip { border-radius: 999px; padding: 6px 9px; font-size: 10px; font-weight: 900; border: 1px solid var(--border); background: var(--surface-2); color: var(--muted); }
+    .chip.new { background: color-mix(in srgb, var(--sap-blue) 12%, var(--surface)); color: var(--info); border-color: color-mix(in srgb, var(--sap-blue) 26%, var(--border)); }
+    .chip.changed { background: color-mix(in srgb, var(--warning) 10%, var(--surface)); color: var(--warning); border-color: color-mix(in srgb, var(--warning) 23%, var(--border)); }
+    .chip.deprecated { background: color-mix(in srgb, var(--danger) 10%, var(--surface)); color: var(--danger); border-color: color-mix(in srgb, var(--danger) 23%, var(--border)); }
+    .impact-text { color: var(--muted); font-size: 13.5px; margin: 0 0 16px; }
+    .assessment {
+      border-radius: 13px;
+      padding: 11px 12px;
+      margin-top: auto;
+      background: color-mix(in srgb, var(--success) 8%, var(--surface));
+      border: 1px solid color-mix(in srgb, var(--success) 24%, var(--border));
+      color: var(--success);
+      font-weight: 850;
+      font-size: 12.5px;
+    }
+    .assessment.review { color: var(--warning); background: color-mix(in srgb, var(--warning) 8%, var(--surface)); border-color: color-mix(in srgb, var(--warning) 22%, var(--border)); }
+    .card-footer { margin-top: 16px; padding-top: 13px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .doc-link { color: var(--sap-blue); font-weight: 850; font-size: 12px; text-decoration: none; }
+    .doc-link:hover { text-decoration: underline; }
+    .more-btn { border: 0; background: transparent; color: var(--muted); cursor: pointer; font-weight: 850; font-size: 12px; display:inline-flex; align-items:center; gap:5px; }
+    .more-btn .ui-icon { width:14px; height:14px; }
+
+    .details { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--border); color: var(--muted); font-size: 12.5px; }
+    .release-card.open .details { display: block; }
+    .details-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .detail-box { background: var(--surface-2); border-radius: 10px; padding: 9px; }
+    .detail-box small { display: block; text-transform: uppercase; letter-spacing: .06em; font-size: 9px; font-weight: 900; margin-bottom: 3px; }
+    .detail-box strong { color: var(--text); font-size: 11px; }
+
+
+    .empty { display: none; padding: 28px; text-align: center; color: var(--muted); background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius); }
+
+    footer { margin: 44px 0 30px; padding: 22px 0 8px; border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 22px; color: var(--muted); font-size: 11px; }
+    footer strong { color: var(--text); }
+    .ntt-mark { display: inline-flex; align-items: center; padding: 0; border-radius: 0; background: transparent; border: 0; white-space: nowrap; }
+    .ntt-logo { display: block; width: 108px; height: auto; max-height: 28px; object-fit: contain; opacity: 1; background: transparent; }
+    [data-theme="dark"] .ntt-mark { background: transparent; border: 0; }
+
+
+    @media (max-width: 980px) {
+      .takeaways { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 650px) {
+      footer { grid-template-columns: 1fr; gap: 10px; }
+      .ntt-mark { justify-self: start; padding: 0; }
+      .shell { padding: 0 14px; }
+      .topbar-inner { height: 64px; }
+      .product-title, .divider, .action-btn span { display: none; }
+      .section-title-row { align-items: start; flex-direction: column; }
+      .details-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; }
+    }
+
+  </style>
 </head>
-<body class="bg-mapfre-gray dark:bg-mapfre-darker text-gray-800 dark:text-gray-200 min-h-screen flex flex-col transition-colors duration-300">
-
-    <header class="bg-mapfre-red text-white sticky top-0 z-40 shadow-md transition-colors duration-300">
-        <div class="w-full px-4 md:px-8 py-3.5 flex justify-between items-center">
-            <!-- Left side: Logos -->
-            <div class="flex items-center">
-                <!-- Desktop Logo (Full) -->
-                <img src="https://www.mapfre.com/contents/ui/theme/resources/images/menu-logo-transparent.svg" 
-                     alt="MAPFRE" 
-                     class="h-7 hidden sm:block">
-                
-                <!-- Mobile Logo (Icon only) -->
-                <img src="https://www.mapfre.com/contents/ui/theme/resources/images/menu-logo-active-desktop.svg" 
-                     alt="MAPFRE" 
-                     class="h-7 block sm:hidden filter brightness-0 invert">
-            </div>
-            
-            <!-- Right side: Title -->
-            <div class="text-right">
-                <h1 class="text-base md:text-xl font-bold tracking-tight" id="headerTitle">SAP SuccessFactors</h1>
-                <p class="text-[0.7rem] md:text-xs font-medium text-red-100" id="headerSubtitle">Release 2H 2026 - Executive Summary</p>
-            </div>
-        </div>
-    </header>
-
-    <main class="flex-grow w-full px-4 md:px-8 py-8 mx-auto flex flex-col md:flex-row gap-8">
-        
-        <!-- Sidebar Izquierdo: Resumen y Filtros -->
-        <aside class="w-full md:w-1/4 lg:w-1/5 flex-shrink-0">
-            <div class="sticky top-24 flex flex-col gap-4">
-                <!-- Summary Dashboard -->
-                <div class="bg-white dark:bg-mapfre-cardDark rounded-xl p-3 shadow-sm border border-gray-100 dark:border-gray-700 transition-colors duration-300">
-                    <h2 class="text-xs md:text-sm font-bold mb-0.5 text-gray-900 dark:text-white" id="summaryTitle">Release Highlights</h2>
-                    <p class="text-[0.65rem] md:text-[0.7rem] text-gray-600 dark:text-gray-300 mb-2 leading-snug" id="summaryText">Explore the most critical updates for the 2H 2026 release.</p>
-                    
-                    <div class="mt-1.5 pt-1.5 border-t border-gray-100 dark:border-gray-700 flex flex-col gap-1 transition-colors duration-300">
-                        <div class="flex justify-between items-center text-[0.65rem]">
-                            <span class="text-gray-500 dark:text-gray-400 font-medium" id="lblPreview">Preview Release</span>
-                            <span class="font-bold text-gray-800 dark:text-gray-200" id="datePreview">Oct 16, 2026</span>
-                        </div>
-                        <div class="flex justify-between items-center text-[0.65rem]">
-                            <span class="text-gray-500 dark:text-gray-400 font-medium" id="lblProduction">Production Release</span>
-                            <span class="font-bold text-gray-800 dark:text-gray-200" id="dateProduction">Nov 20, 2026</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Filter Menu -->
-                <div class="bg-white dark:bg-mapfre-cardDark rounded-xl p-3 shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col max-h-[calc(100vh-230px)] transition-colors duration-300">
-                    <div class="flex flex-row md:flex-col gap-2 md:gap-1 overflow-x-auto md:overflow-y-auto pb-2 md:pb-0 pr-0 md:pr-1 custom-scrollbar snap-x" id="filterContainer">
-                        <!-- Buttons injected via JS -->
-                    </div>
-                </div>
-            </div>
-        </aside>
-
-        <div class="w-full md:w-3/4 lg:w-4/5 flex flex-col gap-5">
-            <!-- Search Bar and Export Button -->
-            <div class="flex gap-3 w-full">
-                <div class="relative w-full">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <i class="fa-solid fa-magnifying-glass text-gray-400 text-sm"></i>
-                    </div>
-                    <input type="text" id="searchInput" class="w-full pl-11 pr-4 py-3 border border-gray-200 dark:border-gray-700 shadow-sm rounded-xl bg-white dark:bg-mapfre-cardDark text-sm focus:outline-none focus:ring-2 focus:ring-mapfre-red/50 dark:focus:ring-red-500/50 dark:text-white transition-all placeholder-gray-400" placeholder="Search features..." oninput="handleSearch(event)">
-                </div>
-                <button onclick="exportToCSV()" id="btnExport" class="bg-white dark:bg-mapfre-cardDark border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-mapfre-red hover:text-white hover:border-mapfre-red dark:hover:bg-red-500 dark:hover:border-red-500 dark:hover:text-white transition-colors focus:outline-none flex items-center justify-center shrink-0 w-[46px] h-[46px] rounded-xl shadow-sm" title="Export current view to CSV">
-                    <i class="fa-solid fa-download text-sm"></i>
-                </button>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="cardsContainer">
-                <!-- Cards injected via JS -->
-            </div>
-        </div>
-
-    </main>
-
-    <div id="featureModal" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 opacity-0" onclick="closeModalOnOutsideClick(event)">
-        <div id="featureModalContent" class="bg-white dark:bg-mapfre-cardDark rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col transform scale-95 transition-all duration-300">
-            <div class="flex justify-between items-start p-5 md:p-6 border-b border-gray-100 dark:border-gray-700 shrink-0">
-                <div class="flex flex-col gap-2">
-                    <span id="modalModule" class="text-xs font-bold text-mapfre-red dark:text-red-400 uppercase tracking-wider"></span>
-                    <div class="flex flex-wrap gap-2 items-center">
-                        <span id="modalType" class="tag whitespace-nowrap shrink-0 w-fit"></span>
-                        <span id="modalCritical" class="tag whitespace-nowrap shrink-0 w-fit hidden"></span>
-                    </div>
-                </div>
-                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-800 dark:hover:text-white transition-colors p-2 focus:outline-none -mt-2 -mr-2">
-                    <i class="fa-solid fa-xmark text-xl"></i>
-                </button>
-            </div>
-            <div class="p-5 md:p-6 overflow-y-auto custom-scrollbar">
-                <h2 id="modalTitle" class="text-xl md:text-2xl font-bold mb-6 text-gray-900 dark:text-white leading-tight flex items-start gap-2"></h2>
-                
-                <h3 id="modalDescTitle" class="text-sm font-bold text-gray-900 dark:text-white mb-2 uppercase tracking-wide"></h3>
-                <p id="modalDesc" class="text-gray-600 dark:text-gray-300 text-sm mb-6 leading-relaxed"></p>
-                
-                <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700 transition-colors duration-300">
-                    <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-2 flex items-center uppercase tracking-wide">
-                        <i class="fa-solid fa-chart-line mr-2 text-mapfre-red dark:text-red-400"></i> 
-                        <span id="modalImpactLabel"></span>
-                    </h3>
-                    <p id="modalImpact" class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed"></p>
-                </div>
-            </div>
-            <div class="px-5 md:px-6 py-4 border-t border-gray-100 dark:border-gray-700 flex justify-between items-center shrink-0 transition-colors duration-300">
-                <div class="flex items-center gap-4 md:gap-6">
-                    <a id="modalExternalLink" href="#" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-mapfre-red dark:text-red-400 hover:text-mapfre-darkRed dark:hover:text-red-300 transition-colors flex items-center gap-1.5 focus:outline-none">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        <span id="lblViewDocs">View in SAP Docs</span>
-                    </a>
-                    <button id="btnCopySummary" onclick="copySummary()" class="text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white transition-colors flex items-center gap-1.5 focus:outline-none" title="Copy summary to clipboard">
-                        <i class="fa-regular fa-copy" id="copyIcon"></i>
-                        <span id="lblCopy" class="hidden sm:inline">Copy</span>
-                    </button>
-                </div>
-                <button onclick="closeModal()" id="modalCloseBtn" class="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-6 py-2.5 rounded-lg font-bold transition-colors text-sm focus:outline-none">Close</button>
-            </div>
-        </div>
+<body>
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <div class="brand-group">
+      <img class="mapfre-logo" src="data:image/png;base64,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" alt="MAPFRE" />
+      <div class="divider"></div>
+      <div class="product-title">
+        <strong>What’s New • SAP SuccessFactors • 2H 2026</strong>
+        <span>Production Release • November 13, 2026</span>
+      </div>
     </div>
-
-    <div class="fixed bottom-6 right-6 z-50 mr-[calc(100vw-100%)]">
-        <div class="flex flex-row gap-1 bg-white/95 dark:bg-mapfre-cardDark/95 backdrop-blur-md px-1.5 py-1.5 rounded-full shadow-xl border border-gray-200/80 dark:border-gray-700 transition-colors duration-300 items-center">
-            <!-- Theme Toggle Button -->
-            <button onclick="toggleTheme()" id="themeBtn" class="w-11 h-11 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none" title="Toggle Theme">
-                <i class="fa-solid text-xl transition-transform duration-300" id="themeIcon"></i>
-            </button>
-
-            <div class="w-[1px] bg-gray-200 dark:bg-gray-700 h-5 my-auto"></div>
-
-            <!-- Language Toggle Button -->
-            <button onclick="toggleLanguage()" class="w-11 h-11 rounded-full flex items-center justify-center gap-1 text-xs font-bold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none" title="Toggle Language">
-                <i class="fa-solid fa-globe text-xl text-mapfre-red dark:text-red-400"></i>
-                <span id="langText" class="text-xs font-bold">ES</span>
-            </button>
-        </div>
+    <div class="actions">
+      <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Toggle color theme">
+        <svg class="ui-icon" id="themeIcon" viewBox="0 0 24 24" aria-hidden="true"><path class="theme-fill" d="M21.55 14.85A9.55 9.55 0 0 1 9.15 2.45a9.5 9.5 0 1 0 12.4 12.4Z"></path></svg>
+      </button>
     </div>
+  </div>
+</header>
 
-    <script>
-        // 1. App State
-        let currentLang = 'en';
-        let currentFilter = 'All';
-        let currentSearch = '';
-        let currentFilteredData = [];
-        let currentOpenItemId = null;
+<main class="shell">
 
-        // 2. Translatable UI Dictionary
-        const uiDict = {
-            en: {
-                headerTitle: "SAP SuccessFactors",
-                headerSubtitle: "Release 2H 2026 - Executive Summary",
-                summaryTitle: "Release Highlights",
-                summaryText: "Explore the most critical updates for the 2H 2026 release.",
-                filterAll: "All Modules",
-                typeNew: "New",
-                typeChanged: "Changed",
-                lblImpact: "Business Impact",
-                btnLang: "ES",
-                btnReadMore: "View Details",
-                modalDescLabel: "Description",
-                btnClose: "Close",
-                lblCritical: "CRITICAL",
-                lblPreview: "Preview Release",
-                lblProduction: "Production Release",
-                datePreview: "Oct 16, 2026",
-                dateProduction: "Nov 20, 2026",
-                lblViewDocs: "View in SAP Docs",
-                tooltipNew: "Brand new feature introduced in this release.",
-                tooltipChanged: "Modification or enhancement to an existing feature.",
-                tooltipCritical: "Requires immediate attention or configuration.",
-                searchPlaceholder: "Search features...",
-                noResults: "No results found for",
-                tooltipCopy: "Copy summary to clipboard",
-                tooltipCopied: "Copied!",
-                tooltipExport: "Export current view to CSV",
-                lblCopy: "Copy",
-                tooltipTheme: "Switch between Light and Dark mode",
-                tooltipLang: "Switch language between English and Spanish"
-            },
-            es: {
-                headerTitle: "SAP SuccessFactors",
-                headerSubtitle: "Release 2H 2026 - Resumen Ejecutivo",
-                summaryTitle: "Release Highlights",
-                summaryText: "Explore the most critical updates for the 2H 2026 release.",
-                filterAll: "Todos los Módulos",
-                typeNew: "Nuevo",
-                typeChanged: "Modificado",
-                lblImpact: "Impacto en el Negocio",
-                btnLang: "EN",
-                btnReadMore: "Ver Detalles",
-                modalDescLabel: "Descripción",
-                btnClose: "Cerrar",
-                lblCritical: "CRÍTICO",
-                lblPreview: "Release Preview",
-                lblProduction: "Release Producción",
-                datePreview: "16 Oct 2026",
-                dateProduction: "20 Nov 2026",
-                lblViewDocs: "Ver en SAP Docs",
-                tooltipNew: "Característica completamente nueva introducida en este release.",
-                tooltipChanged: "Modificación o mejora a una característica ya existente.",
-                tooltipCritical: "Requiere atención, revisión o configuración inmediata.",
-                searchPlaceholder: "Buscar funciones...",
-                noResults: "No se encontraron resultados para",
-                tooltipCopy: "Copiar resumen al portapapeles",
-                tooltipCopied: "¡Copiado!",
-                tooltipExport: "Exportar vista actual a CSV",
-                lblCopy: "Copiar",
-                tooltipTheme: "Cambiar entre modo claro y oscuro",
-                tooltipLang: "Cambiar idioma entre Inglés y Español"
-            }
-        };
+  <div class="section-title-row">
+    <div><h2>Executive takeaways</h2><p>What HR users need to know first.</p></div>
+  </div>
+  <section class="takeaways">
+    <article class="takeaway" style="--accent:#0a6ed1"><div class="module-tag">Employee Central</div><h3>No critical impact identified for USA 931</h3><p>The security behavior change is not enabled. The two legacy admin pages are not in use. Remaining EC changes are low-impact UI, validation and traceability improvements.</p></article>
+    <article class="takeaway" style="--accent:#107e3e"><div class="module-tag">Compensation</div><h3>Primarily additive functionality</h3><p>Additional rating fields, statement acknowledgment and more reliable Executive Review exports expand capability without indicating a disruptive process change.</p></article>
+    <article class="takeaway" style="--accent:#7b4db1"><div class="module-tag">Learning</div><h3>AI and user-experience expansion</h3><p>New AI-assisted capabilities are customer-configured. External Learning Request fields are automatically available and should be reviewed where SF-182 is used.</p></article>
+  </section>
 
-        // 3. Official Release Data
-        const releaseData = [
-            {
-                id: 1,
-                module: "Employee Central",
-                type: "New",
-                isCritical: true,
-                titleEn: "Organizational Modeling in Employee Central",
-                titleEs: "Modelado Organizacional en Employee Central",
-                descEn: "Organizational Modeling is a new feature that enables you to plan, simulate, and implement organizational changes before applying them live.",
-                descEs: "Nueva función que le permite planificar, simular e implementar cambios organizacionales antes de aplicarlos a su estructura real.",
-                impactEn: "Reduces risk during corporate restructuring by allowing HR to visualize impacts before committing changes to the active database.",
-                impactEs: "Reduce el riesgo durante reestructuraciones corporativas al permitir visualizar impactos antes de aplicarlos a la base real.",
-                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/ae3174a9514e44ae800a88608e3b5f3a.html?version=cloud&locale=en-US"
-            },
-            {
-                id: 2,
-                module: "Employee Central",
-                type: "New",
-                isCritical: false,
-                titleEn: "Pay Range Added to Job Information",
-                titleEs: "Rango Salarial Añadido a Información del Puesto",
-                descEn: "Pay range values are now stored directly in Job Information records and calculated once when saved.",
-                descEs: "Los valores de rango salarial ahora se almacenan directamente en los registros de Información del Puesto.",
-                impactEn: "Enhances reporting accuracy and provides immediate visibility into compensation bands at the job level.",
-                impactEs: "Mejora la precisión de los reportes y proporciona visibilidad inmediata de las bandas de compensación.",
-                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/bac088c1319f4e30b7ff20b39403cea0.html?version=cloud&locale=en-US"
-            },
-            {
-                id: 3,
-                module: "Employee Central",
-                type: "New",
-                isCritical: false,
-                titleEn: "New Benefits Console for Administrators",
-                titleEs: "Nueva Consola de Beneficios para Administradores",
-                descEn: "A centralized console that streamlines monitoring of key benefit processes and provides quick access to essential administrative tools.",
-                descEs: "Consola centralizada que agiliza el monitoreo de procesos clave de beneficios y proporciona acceso rápido a herramientas.",
-                impactEn: "Improves HR efficiency in managing global and local benefit programs without navigating multiple menus.",
-                impactEs: "Mejora la eficiencia de RRHH en la gestión de programas de beneficios sin navegar por múltiples menús.",
-                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/d5a0b5b56ac24735951c623bb323e806.html?version=cloud&locale=en-US"
-            },
-            {
-                id: 4,
-                module: "Compensation",
-                type: "New",
-                isCritical: true,
-                titleEn: "Multiple PM Rating and Comp Rating Fields in Compensation Templates",
-                titleEs: "Múltiples Campos de Calificación de Desempeño y Compensación",
-                descEn: "We've enhanced compensation plan templates with additional rating fields for salary and stock plan tabs, giving you more flexibility in structuring calculations.",
-                descEs: "Hemos mejorado las plantillas del plan de compensación con campos de calificación adicionales para salario y acciones, brindando mayor flexibilidad.",
-                impactEn: "Allows MAPFRE to perform more granular and accurate compensation calculations based on diverse performance and compensation ratings.",
-                impactEs: "Permite a MAPFRE realizar cálculos de compensación más granulares y precisos basados en diversas calificaciones.",
-                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/78b44210e4c34abab6b1e6e6a4a5c411.html?version=cloud&locale=en-US"
-            },
-            {
-                id: 5,
-                module: "Time Tracking",
-                type: "New",
-                isCritical: false,
-                titleEn: "Dynamic Shift Assignment",
-                titleEs: "Asignación Dinámica de Turnos",
-                descEn: "Automatically assign shifts to employees based on configurable rules, reducing manual scheduling effort.",
-                descEs: "Asigne turnos automáticamente a los empleados en función de reglas configurables, reduciendo la programación manual.",
-                impactEn: "Optimizes workforce management by automatically aligning employee availability with business needs.",
-                impactEs: "Optimiza la gestión de la fuerza laboral alineando automáticamente la disponibilidad con las necesidades del negocio.",
-                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/7e0c9014d07e4b87bd06df5c646e3a57.html?version=cloud&locale=en-US"
-            },
-            {
-                id: 6,
-                module: "Performance & Goals",
-                type: "Changed",
-                isCritical: false,
-                titleEn: "Manual Competency Ratings Supported Along with Behavior Ratings",
-                titleEs: "Calificaciones Manuales de Competencias Soportadas",
-                descEn: "You can now allow users to manually rate competencies, in addition to rating behaviors, in the latest experience of Performance Management forms.",
-                descEs: "Ahora puede permitir a los usuarios calificar manualmente las competencias, además de calificar comportamientos, en los formularios de Desempeño.",
-                impactEn: "Provides a more holistic view of employee performance by capturing both competency and behavioral feedback accurately.",
-                impactEs: "Proporciona una visión más holística del desempeño del empleado capturando retroalimentación de competencias y comportamiento.",
-                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/a912f868f8e8400fa05902a5d0384c2d.html?version=cloud&locale=en-US"
-            },
-            {
-                id: 7,
-                module: "Performance & Goals",
-                type: "New",
-                isCritical: false,
-                titleEn: "Set Mirrored Distribution in Calibration Templates",
-                titleEs: "Configurar Distribución Reflejada en Calibración",
-                descEn: "Administrators can define mirrored distribution rules for ratings from Performance Management forms in calibration templates, linking two ratings together.",
-                descEs: "Los administradores pueden definir reglas de distribución reflejada para calificaciones de formularios en plantillas de calibración.",
-                impactEn: "Ensures consistency and alignment between different rating scales during the MAPFRE calibration process.",
-                impactEs: "Asegura la coherencia y alineación entre diferentes escalas de calificación durante el proceso de calibración en MAPFRE.",
-                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/9b18691f235145d5ad2dee9b7cd42105.html?version=cloud&locale=en-US"
-            },
-            {
-                id: 8,
-                module: "Platform",
-                type: "New",
-                isCritical: true,
-                titleEn: "Joule Assistants and Agents in Restricted Availability",
-                titleEs: "Asistentes y Agentes de Joule",
-                descEn: "Introducing more AI assistants and agents in restricted availability to navigate system tasks autonomously using SAP Business AI.",
-                descEs: "Introducción de más asistentes y agentes de IA en disponibilidad restringida para navegar tareas del sistema usando SAP Business AI.",
-                impactEn: "Dramatically reduces administrative time by automating routine inquiries and complex transactional workflows.",
-                impactEs: "Reduce drásticamente el tiempo administrativo al automatizar consultas rutinarias y flujos complejos.",
-                url: "https://help.sap.com/docs/PRODUCTS/e9989dc2e5b046ec929e2ad5e8305d24/e37cd6b94aa046fb8e17f0729a7cb0d5.html?version=cloud&locale=en-US"
-            },
-            {
-                id: 9,
-                module: "Onboarding",
-                type: "Changed",
-                isCritical: true,
-                titleEn: "Deprecation of Basic Authentication for Onboarding",
-                titleEs: "Deprecación de Autenticación Básica en Onboarding",
-                descEn: "Basic Authentication with SAP SuccessFactors Onboarding will be removed. All systems must migrate to SAP Identity Authentication Service (IAS).",
-                descEs: "La autenticación básica con Onboarding se eliminará. Todos los sistemas deben migrar a SAP Identity Authentication Service (IAS).",
-                impactEn: "Crucial security mandate. Requires immediate IT roadmap planning to prevent onboarding service disruption.",
-                impactEs: "Mandato de seguridad crucial. Requiere planificación inmediata por parte de TI para evitar interrupciones en el servicio.",
-                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/3c403d525a264081ba54e2388f67154f.html?version=cloud&locale=en-US"
-            },
-            {
-                id: 10,
-                module: "Onboarding",
-                type: "New",
-                isCritical: false,
-                titleEn: "Latest Hiring Experience",
-                titleEs: "Última Experiencia de Contratación",
-                descEn: "HR administrators can hire and rehire employees on a redesigned Add New Employee page built around the latest People Profile with improved validation.",
-                descEs: "Los administradores de RRHH pueden contratar y recontratar empleados en una página rediseñada con validación mejorada.",
-                impactEn: "Accelerates data entry for new hires and minimizes validation errors during the critical onboarding phase.",
-                impactEs: "Acelera la entrada de datos para nuevos empleados y minimiza errores de validación durante la integración.",
-                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/6da9216269fc46b3a51aae19419b51d7.html?version=cloud&locale=en-US"
-            },
-            {
-                id: 11,
-                module: "Learning",
-                type: "New",
-                isCritical: false,
-                titleEn: "Assisted Course Generation in Learning Administration",
-                titleEs: "Generación Asistida de Cursos por IA",
-                descEn: "Use AI-assisted capabilities to generate Learning courses and task checklists rapidly.",
-                descEs: "Utilice capacidades asistidas por IA para generar cursos de aprendizaje y listas de tareas rápidamente.",
-                impactEn: "Lowers the cost and time required to develop internal training materials for MAPFRE employees.",
-                impactEs: "Reduce el costo y el tiempo requerido para desarrollar materiales de capacitación internos en MAPFRE.",
-                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/5f6390091ead45dcb2dfde40accec1a5.html?version=cloud&locale=en-US"
-            },
-            {
-                id: 12,
-                module: "Extra Enhancements",
-                type: "Changed",
-                isCritical: false,
-                subModulesEn: "Platform & Suite",
-                subModulesEs: "Plataforma y Suite",
-                titleEn: "General User Experience & Visual Updates",
-                titleEs: "Actualizaciones Visuales y de UX",
-                descEn: "SAP has deployed numerous minor visual enhancements across the suite, including automatic user experience updates and global headers.",
-                descEs: "SAP ha implementado mejoras visuales menores, incluyendo la habilitación automática de la nueva experiencia de usuario.",
-                impactEn: "Provides a more modern, cohesive, and accessible look-and-feel across all modules for a better employee experience.",
-                impactEs: "Proporciona un aspecto más moderno, cohesivo y accesible en todos los módulos para una mejor experiencia.",
-                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/1217dc9917f1449ca754c3641addb193.html?version=cloud&locale=en-US"
-            },
-            {
-                id: 13,
-                module: "Extra Enhancements",
-                type: "New",
-                isCritical: false,
-                subModulesEn: "Mobile Applications",
-                subModulesEs: "Aplicaciones Móviles",
-                titleEn: "Mobile App Quality of Life Improvements",
-                titleEs: "Mejoras de Calidad de Vida en App Móvil",
-                descEn: "The mobile apps now support Dark Mode automatically based on OS settings and include a new 'Highlights' section.",
-                descEs: "Las apps móviles ahora soportan el Modo Oscuro según la configuración del sistema e incluyen sección de 'Destacados'.",
-                impactEn: "Improves mobile adoption and user comfort for on-the-go workers by adapting natively to device preferences.",
-                impactEs: "Mejora la adopción móvil adaptándose de forma nativa a las preferencias de los dispositivos de los usuarios.",
-                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/3cad3646e8d74c2bbe8e382fd98cad06.html?version=cloud&locale=en-US"
-            },
-            {
-                id: 14,
-                module: "Extra Enhancements",
-                type: "Changed",
-                isCritical: false,
-                subModulesEn: "Story Reports",
-                subModulesEs: "Story Reports",
-                titleEn: "Story Reports Guardrails & Enhancements",
-                titleEs: "Límites y Mejoras en Story Reports",
-                descEn: "Default limits for maximum self-joins and nested IF statements have been increased alongside new aggregation calculations.",
-                descEs: "Se incrementaron los límites para auto-uniones y declaraciones IF anidadas, permitiendo cálculos de agregación.",
-                impactEn: "Allows data analysts to build more complex and powerful cross-module reports without hitting system limitations.",
-                impactEs: "Permite a los analistas construir reportes más complejos sin alcanzar las limitaciones del sistema.",
-                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/033d28fd6e0a467fabbc3537e81d27cb.html?version=cloud&locale=en-US"
-            },
-            {
-                id: 15,
-                module: "Extra Enhancements",
-                type: "Changed",
-                isCritical: false,
-                subModulesEn: "Check Tool",
-                subModulesEs: "Check Tool",
-                titleEn: "Check Tool & System Monitoring",
-                titleEs: "Check Tool y Monitoreo del Sistema",
-                descEn: "Enhanced the Check Tool with periodic execution visibility, expanded quick fix options, and improved table filtering.",
-                descEs: "Mejoras en el Check Tool con visibilidad periódica, opciones ampliadas de corrección rápida y filtrado.",
-                impactEn: "Empowers IT and HR teams to proactively maintain system health and resolve configuration errors faster.",
-                impactEs: "Empodera a los equipos de TI y RRHH para mantener proactivamente la salud del sistema y resolver errores.",
-                url: "https://help.sap.com/docs/PRODUCTS/8e0d540f96474717bbf18df51e54e522/6cd8ddf0d3fe420b8d4cf9418ac65a9a.html?version=cloud&locale=en-US"
-            }
-        ];
+  <section class="controlbar" aria-label="Filters">
+    <div class="segmented" id="moduleToggle" aria-label="Module filter">
+      <button type="button" data-module="all" class="active">All</button>
+      <button type="button" data-module="Employee Central">EC</button>
+      <button type="button" data-module="Compensation">Comp</button>
+      <button type="button" data-module="Learning">Learning</button>
+    </div>
+    <div class="search-wrap"><svg class="search-icon ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><input id="searchInput" type="search" placeholder="Search" aria-label="Search"></div>
+  </section>
 
-        function renderFilters() {
-            // Orden estricto solicitado: All Modules, Employee Central, Compensation, Time Tracking, Performance & Goals, y luego el resto
-            const priorityOrder = ['All', 'Employee Central', 'Compensation', 'Time Tracking', 'Performance & Goals', 'Platform', 'Onboarding', 'Learning', 'Extra Enhancements'];
-            const availableModules = [...new Set(releaseData.map(item => item.module))];
-            
-            const modules = priorityOrder.filter(m => m === 'All' || availableModules.includes(m));
-            availableModules.forEach(m => { if (!modules.includes(m)) modules.push(m); });
+  <div id="modulesRoot"></div>
+  <div class="empty" id="emptyState">No release items match your current filters.</div>
 
-            const container = document.getElementById('filterContainer');
-            container.innerHTML = '';
+  <footer>
+    <div><strong>MAPFRE USA · SAP SuccessFactors 2H 2026 Release</strong></div>
+    <div>Release date: <strong>November 13, 2026</strong></div>
+    <div class="ntt-mark"><img class="ntt-logo" src="data:image/png;base64,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" alt="NTT DATA"></div>
+  </footer>
+</main>
 
-            const moduleIcons = {
-                'All': 'fa-layer-group',
-                'Employee Central': 'fa-sitemap',
-                'Compensation': 'fa-money-bill-trend-up',
-                'Time Tracking': 'fa-clock',
-                'Performance & Goals': 'fa-bullseye',
-                'Platform': 'fa-server',
-                'Onboarding': 'fa-user-plus',
-                'Learning': 'fa-graduation-cap',
-                'Extra Enhancements': 'fa-plus-circle'
-            };
+<script>
+const releaseData = [
+  {
+    module: "Employee Central", accent: "#0a6ed1", icon: "EC",
+    feature: "Restricted Access for Managers Supports Multiple Permission Roles",
+    classification: "Behavioral / Security Enhancement",
+    sapType: "Changed – Major",
+    enablement: "Automatically On",
+    impact: "Changes RBP evaluation for managers with multiple permission roles when responsibility-period restrictions are used. Permission categories such as View Current and View History are evaluated independently, which can change employee-data visibility.",
+    assessment: "✅ No Impact – Not Enabled in MAPFRE USA 931.",
+    assessmentClass: "ok",
+    url: "https://help.sap.com/docs/successfactors-release-information/8e0d540f96474717bbf18df51e54e522/dbd6cf6837c84857bad8eab0f9a4e652.html"
+  },
+  {
+    module: "Employee Central", accent: "#0a6ed1", icon: "EC",
+    feature: "History UI Improvements in the Latest People Profile",
+    classification: "User Experience Enhancement",
+    sapType: "Changed – Minor",
+    enablement: "Automatically On",
+    impact: "The latest History UI displays all fields by default and provides clearer formatting for new, updated and previous values. It affects the user experience when reviewing effective-dated history, not the underlying employee data.",
+    assessment: "✅ Low Impact (Only UI)",
+    assessmentClass: "ok",
+    url: "https://help.sap.com/docs/successfactors-release-information/8e0d540f96474717bbf18df51e54e522/e1a627992fe34ed4919203cf4b910e1e.html"
+  },
+  {
+    module: "Employee Central", accent: "#0a6ed1", icon: "EC",
+    feature: "Enhanced Succession Data Model Import Validation",
+    classification: "Configuration / Validation Enhancement",
+    sapType: "Changed – Minor",
+    enablement: "Automatically On",
+    impact: "Exported Succession Data Model XML files now contain version information. SAP validates the version during import and blocks outdated, invalid or unversioned XML files, reducing the risk of overwriting newer configuration.",
+    assessment: "✅ Low Impact (files now contain version information)",
+    assessmentClass: "ok",
+    url: "https://help.sap.com/docs/successfactors-release-information/8e0d540f96474717bbf18df51e54e522/e5705b005ae14d929a6b2f806044cc62.html"
+  },
+  {
+    module: "Employee Central", accent: "#0a6ed1", icon: "EC",
+    feature: "Document Generation Usage Record in Employee Central",
+    classification: "New Feature / Audit Enhancement",
+    sapType: "New – Major",
+    enablement: "Automatically On",
+    impact: "Creates a Document Generation Usage Record MDF entry for successful document generation activities, including template, source, target user, output type and other traceability information. It improves auditing and reporting without changing the document-generation business process itself.",
+    assessment: "✅ Low Impact (audit/traceability only)",
+    assessmentClass: "ok",
+    url: "https://help.sap.com/docs/successfactors-release-information/8e0d540f96474717bbf18df51e54e522/a33daafe9d49466f8143c9344782498b.html"
+  },
+  {
+    module: "Employee Central", accent: "#0a6ed1", icon: "EC",
+    feature: "Deprecation of Manage Workflow Requests with Invalid Approvers",
+    classification: "Feature Removal / Deprecation",
+    sapType: "Changed – Deprecated",
+    enablement: "Automatically On",
+    impact: "The legacy Manage Workflow Requests with Invalid Approvers page is deleted on November 13, 2026. SAP replaces its capabilities with Admin Alerts, including Invalid Approvers in Employee-Related Workflows and Invalid Approvers in Non-Employee-Related Workflows.",
+    assessment: "✅ No Impact – Not in Use in MAPFRE USA 931.",
+    assessmentClass: "ok",
+    url: "https://help.sap.com/docs/successfactors-release-information/8e0d540f96474717bbf18df51e54e522/6fdead42e9c14d7fbba37c95c103d7a5.html"
+  },
+  {
+    module: "Employee Central", accent: "#0a6ed1", icon: "EC",
+    feature: "Deprecation of Legacy Alert Transaction",
+    classification: "Feature Removal / Deprecation",
+    sapType: "Changed – Deprecated",
+    enablement: "Automatically On",
+    impact: "The legacy Employees Associated With Invalid HR Data transaction is deleted on November 13, 2026. SAP replaces it with Admin Alerts, which supports HR data issues including Job Information alerts.",
+    assessment: "✅ No Impact – Not in Use in MAPFRE USA 931.",
+    assessmentClass: "ok",
+    url: "https://help.sap.com/docs/successfactors-release-information/8e0d540f96474717bbf18df51e54e522/df7fbc17ea814d4c986fdd564733ba40.html"
+  },
+  {
+    module: "Compensation", accent: "#107e3e", icon: "C",
+    feature: "Multiple PM Rating and Comp Rating Fields in Compensation Templates",
+    classification: "New Feature / Functional Expansion",
+    sapType: "New – Major",
+    enablement: "Automatically On",
+    impact: "Adds additional standard PM Rating and Comp Rating fields to Compensation templates. Salary tabs support three additional fields of each type and Stock tabs one additional field of each type. They can be used in rating sources, guidelines, filters, worksheets, Executive Review, exports, reports, APIs and compensation calculations. Existing templates are not automatically modified unless the new fields are configured.",
+    url: "https://help.sap.com/docs/successfactors-release-information/8e0d540f96474717bbf18df51e54e522/78b44210e4c34abab6b1e6e6a4a5c411.html"
+  },
+  {
+    module: "Compensation", accent: "#107e3e", icon: "C",
+    feature: "Compensation Statement Acknowledgment",
+    classification: "New Feature / Compliance Enhancement",
+    sapType: "New – Major",
+    enablement: "Customer Configured",
+    impact: "Allows employees to formally acknowledge receipt of Compensation, Variable Pay, Combined and Bonus Assignment Statements. The Reward Statement Generation Report also receives acknowledgment-required and acknowledgment-status information. Existing plans are not affected unless the feature is enabled.",
+    url: "https://help.sap.com/docs/successfactors-release-information/8e0d540f96474717bbf18df51e54e522/7c901b9686d0483db37071b1940df49f.html"
+  },
+  {
+    module: "Compensation", accent: "#107e3e", icon: "C",
+    feature: "Simultaneous Executive Review Exports in XLSX Format",
+    classification: "Performance / Reliability Enhancement",
+    sapType: "Changed – Minor",
+    enablement: "Automatically On",
+    impact: "Multiple Executive Review XLSX export jobs can run concurrently without failing, including when large data sets are processed. This is primarily a reliability and performance improvement.",
+    url: "https://help.sap.com/docs/successfactors-release-information/8e0d540f96474717bbf18df51e54e522/0998cba5e4d247ea8d042d244df5a29e.html"
+  },
+  {
+    module: "Learning", accent: "#7b4db1", icon: "L",
+    feature: "Assisted Course Generation in Learning Administration",
+    classification: "New Feature / Generative AI",
+    sapType: "New – Major",
+    enablement: "Customer Configured",
+    impact: "Introduces AI-assisted generation of Learning courses and task checklists. Administrators can generate information such as Title, Description, Goals, Duration and Audience using a prompt and optional PDF source material. It requires the corresponding SAP AI capabilities and permissions.",
+    url: "https://help.sap.com/docs/successfactors-release-information/8e0d540f96474717bbf18df51e54e522/5f6390091ead45dcb2dfde40accec1a5.html"
+  },
+  {
+    module: "Learning", accent: "#7b4db1", icon: "L",
+    feature: "Automatic Review and Association of Inferred Skills and Ratings for Learning",
+    classification: "AI / Automation Enhancement",
+    sapType: "Changed – Major",
+    enablement: "Customer Configured",
+    impact: "Allows AI-inferred skills and ratings to be automatically reviewed and associated with Learning items and programs instead of requiring manual administrator review. It requires the applicable Assisted Skills Inference, AI services and Talent Intelligence Hub configuration.",
+    url: "https://help.sap.com/docs/successfactors-release-information/8e0d540f96474717bbf18df51e54e522/2481872d3b76459c96e4aa3591c38f6f.html"
+  },
+  {
+    module: "Learning", accent: "#7b4db1", icon: "L",
+    feature: "Enhancements to Survey Cards in the New Learning Experience",
+    classification: "User Experience / Functional Enhancement",
+    sapType: "Changed – Minor",
+    enablement: "Customer Configured",
+    impact: "Improves required-survey handling in the New Learning Experience. Survey cards can appear for manual completions, imported completions and certain removed learning-plan items, and required-survey due dates are displayed on Learning cards.",
+    url: "https://help.sap.com/docs/successfactors-release-information/8e0d540f96474717bbf18df51e54e522/d5902edf6e2044dd9156c824090d406d.html"
+  },
+  {
+    module: "Learning", accent: "#7b4db1", icon: "L",
+    feature: "Additional Fields on External Learning Request Forms",
+    classification: "Functional / Reporting Enhancement",
+    sapType: "Changed – Minor",
+    enablement: "Automatically On",
+    impact: "Adds standard SF-182 External Learning Request fields including Vendor Website, Vendor Point of Contact, Individual or Group Training, Student or Membership ID and Training Credit CPE Hours. Additional SF-182 and verification fields also become reportable in Story Reports. The new fields are displayed by default but can be hidden through configuration.",
+    url: "https://help.sap.com/docs/successfactors-release-information/8e0d540f96474717bbf18df51e54e522/3f3b8876e16d4f7e888c2b51498904b8.html"
+  }
+];
 
-            modules.forEach(mod => {
-                const btn = document.createElement('button');
-                
-                let displayText = mod;
-                if (mod === 'All') displayText = currentLang === 'en' ? uiDict.en.filterAll : uiDict.es.filterAll;
-                if (mod === 'Extra Enhancements') displayText = currentLang === 'en' ? 'Extra Enhancements' : 'Mejoras Extra';
-                
-                const iconClass = moduleIcons[mod] || 'fa-cube';
-                const count = mod === 'All' ? releaseData.length : releaseData.filter(item => item.module === mod).length;
-                
-                btn.className = `flex-shrink-0 md:w-full text-left px-3 py-2 rounded-full md:rounded-lg text-xs md:text-sm font-medium transition-colors duration-200 focus:outline-none flex justify-between items-center gap-3 md:gap-0 snap-start ${
-                    currentFilter === mod 
-                    ? 'bg-mapfre-red text-white shadow-md' 
-                    : 'bg-gray-100 dark:bg-gray-800 md:bg-transparent text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-                }`;
-                
-                if (currentFilter === mod) {
-                    btn.innerHTML = `
-                        <div class="flex items-center whitespace-nowrap md:truncate md:pr-2">
-                            <i class="fa-solid ${iconClass} w-5 text-center mr-1.5 opacity-90"></i>
-                            <span class="whitespace-nowrap md:truncate">${displayText}</span> 
-                        </div>
-                        <span class="bg-white/20 text-white text-[0.65rem] py-0.5 px-2 rounded-full font-bold flex-shrink-0">${count}</span>
-                    `;
-                } else {
-                    btn.innerHTML = `
-                        <div class="flex items-center whitespace-nowrap md:truncate md:pr-2">
-                            <i class="fa-solid ${iconClass} w-5 text-center mr-1.5 opacity-60"></i>
-                            <span class="whitespace-nowrap md:truncate">${displayText}</span> 
-                        </div>
-                        <span class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-[0.65rem] py-0.5 px-2 rounded-full font-bold flex-shrink-0">${count}</span>
-                    `;
-                }
+const moduleMeta = {
+  "Employee Central": {accent:"#0a6ed1", icon:"EC", subtitle:"Core HR behavior, UX, validation, audit and legacy admin changes"},
+  "Compensation": {accent:"#107e3e", icon:"C", subtitle:"Planning functionality, statement acknowledgment and export reliability"},
+  "Learning": {accent:"#7b4db1", icon:"L", subtitle:"AI-assisted functionality, learner UX and external learning enhancements"}
+};
 
-                btn.onclick = () => {
-                    currentFilter = mod;
-                    renderFilters(); 
-                    renderCards();
-                };
-                container.appendChild(btn);
-            });
-        }
+let state = { module:"all", search:"" };
 
-        function handleSearch(event) {
-            currentSearch = event.target.value.toLowerCase();
-            renderCards();
-        }
 
-        function renderCards() {
-            const container = document.getElementById('cardsContainer');
-            container.innerHTML = '';
+function moduleIconSvg(moduleName){
+  if (moduleName === "Employee Central") return `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><circle cx="8" cy="10" r="2"></circle><path d="M5.5 15c.7-1.6 4.3-1.6 5 0M13.5 9h4.5M13.5 13h4.5"></path></svg>`;
+  if (moduleName === "Compensation") return `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M15.2 8.3c-.7-.8-1.7-1.2-3-1.2-1.7 0-3 .8-3 2.1 0 1.4 1.2 1.8 3 2.2 1.8.4 3 1 3 2.4 0 1.5-1.4 2.3-3.3 2.3-1.5 0-2.8-.5-3.7-1.5M12 5.5v13"></path></svg>`;
+  return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-5 9 5-9 5-9-5Z"></path><path d="M7 12.5V17c2.8 2 7.2 2 10 0v-4.5M21 10v6"></path></svg>`;
+}
 
-            let filteredData = currentFilter === 'All' 
-                ? releaseData 
-                : releaseData.filter(item => item.module === currentFilter);
+function typeClass(type){
+  const t = type.toLowerCase();
+  if (t.includes("deprecated")) return "deprecated";
+  if (t.includes("new")) return "new";
+  return "changed";
+}
 
-            if (currentSearch.trim() !== '') {
-                const searchStr = currentSearch.trim();
-                filteredData = filteredData.filter(item => {
-                    const title = (currentLang === 'en' ? item.titleEn : item.titleEs).toLowerCase();
-                    const desc = (currentLang === 'en' ? item.descEn : item.descEs).toLowerCase();
-                    const moduleName = item.module.toLowerCase();
-                    const typeText = (currentLang === 'es' ? (item.type === 'New' ? uiDict.es.typeNew : uiDict.es.typeChanged) : item.type).toLowerCase();
-                    
-                    return title.includes(searchStr) || desc.includes(searchStr) || moduleName.includes(searchStr) || typeText.includes(searchStr);
-                });
-            }
+function escapeHtml(s){ return String(s ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
 
-            // Orden universal: Lo crítico siempre va primero, luego por ID
-            filteredData.sort((a, b) => {
-                if (a.isCritical && !b.isCritical) return -1;
-                if (!a.isCritical && b.isCritical) return 1;
-                return a.id - b.id;
-            });
-            
-            currentFilteredData = filteredData;
+function searchTerms(){
+  return [...new Set(state.search.trim().split(/\s+/).filter(Boolean))];
+}
 
-            const btnReadMoreText = currentLang === 'en' ? uiDict.en.btnReadMore : uiDict.es.btnReadMore;
-            const lblCriticalText = currentLang === 'en' ? 'CRITICAL' : 'CRÍTICO';
-            const criticalTooltip = currentLang === 'en' ? uiDict.en.tooltipCritical : uiDict.es.tooltipCritical;
+function highlightText(value){
+  const raw = String(value ?? '');
+  const terms = searchTerms();
+  if (!terms.length) return escapeHtml(raw);
+  const escapedTerms = terms.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).sort((a,b) => b.length - a.length);
+  const re = new RegExp(`(${escapedTerms.join('|')})`, 'gi');
+  let out = '';
+  let last = 0;
+  raw.replace(re, (match, _group, offset) => {
+    out += escapeHtml(raw.slice(last, offset));
+    out += `<mark class="search-hit">${escapeHtml(match)}</mark>`;
+    last = offset + match.length;
+    return match;
+  });
+  out += escapeHtml(raw.slice(last));
+  return out;
+}
 
-            if (filteredData.length === 0) {
-                container.innerHTML = `
-                    <div class="col-span-full flex flex-col items-center justify-center py-16 px-4 text-center animate-fade-in">
-                        <div class="bg-gray-100 dark:bg-gray-800 rounded-full w-16 h-16 flex items-center justify-center mb-4 transition-colors duration-300">
-                            <i class="fa-solid fa-magnifying-glass text-2xl text-gray-400 dark:text-gray-500"></i>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-400 text-base font-medium">${uiDict[currentLang].noResults} "<span class="text-gray-900 dark:text-white font-bold">${currentSearch}</span>"</p>
-                    </div>
-                `;
-                return;
-            }
+function matches(item){
+  if (state.module !== "all" && item.module !== state.module) return false;
+  const terms = searchTerms().map(t => t.toLowerCase());
+  if (!terms.length) return true;
+  const haystack = `${item.feature} ${item.classification} ${item.sapType} ${item.enablement} ${item.impact} ${item.assessment||''}`.toLowerCase();
+  return terms.every(term => haystack.includes(term));
+}
 
-            filteredData.forEach((item, index) => {
-                const title = currentLang === 'en' ? item.titleEn : item.titleEs;
-                
-                const criticalBadge = item.isCritical 
-                    ? `<div class="flex items-center gap-1 text-amber-600 dark:text-amber-400" title="${criticalTooltip}">
-                           <i class="fa-solid fa-star text-xs flex-shrink-0"></i>
-                           <span class="text-[0.65rem] font-bold uppercase tracking-wider leading-none mt-[1px]">${lblCriticalText}</span>
-                       </div>` 
-                    : `<div></div>`;
-                
-                let typeText = item.type;
-                if (currentLang === 'es') {
-                    typeText = item.type === 'New' ? uiDict.es.typeNew : uiDict.es.typeChanged;
-                }
+function render(){
+  const root = document.getElementById('modulesRoot');
+  root.innerHTML = '';
+  let totalVisible = 0;
+  Object.keys(moduleMeta).forEach(moduleName => {
+    const items = releaseData.filter(x => x.module === moduleName && matches(x));
+    if (!items.length) return;
+    totalVisible += items.length;
+    const meta = moduleMeta[moduleName];
+    const section = document.createElement('section');
+    section.className = 'module-section';
+    section.id = moduleName.toLowerCase().replace(/\s+/g,'-');
+    section.style.setProperty('--accent', meta.accent);
+    section.innerHTML = `
+      <div class="module-header">
+        <div class="module-icon">${moduleIconSvg(moduleName)}</div>
+        <div><h3>${moduleName}</h3><p>${meta.subtitle}</p></div>
+        <div class="module-count">${items.length} item${items.length>1?'s':''}</div>
+      </div>
+      <div class="cards">${items.map(cardHtml).join('')}</div>
+    `;
+    root.appendChild(section);
+  });
+  document.getElementById('emptyState').style.display = totalVisible ? 'none' : 'block';
+  bindCardButtons();
+}
 
-                const typeColor = item.type === 'New' 
-                    ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300' 
-                    : 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300';
-                
-                const typeIcon = item.type === 'New' ? 'fa-plus' : 'fa-pen-to-square';
-                const typeTooltip = item.type === 'New' 
-                    ? (currentLang === 'en' ? uiDict.en.tooltipNew : uiDict.es.tooltipNew) 
-                    : (currentLang === 'en' ? uiDict.en.tooltipChanged : uiDict.es.tooltipChanged);
+function cardHtml(item){
+  return `<article class="release-card" style="--accent:${item.accent}">
+    <div class="card-top">
+      <div><div class="card-kicker">${highlightText(item.classification)}</div><h4>${highlightText(item.feature)}</h4></div>
+    </div>
+    <div class="chips">
+      <span class="chip ${typeClass(item.sapType)}">${highlightText(item.sapType)}</span>
+      <span class="chip">${highlightText(item.enablement)}</span>
+    </div>
+    <p class="impact-text">${highlightText(item.impact)}</p>
+    ${item.assessment ? `<div class="assessment ${item.assessmentClass==='review'?'review':''}">${highlightText(item.assessment)}</div>` : ''}
+    <div class="details">
+      <div class="details-grid">
+        <div class="detail-box"><small>Classification</small><strong>${highlightText(item.classification)}</strong></div>
+        <div class="detail-box"><small>SAP Type</small><strong>${highlightText(item.sapType)}</strong></div>
+        <div class="detail-box"><small>Enablement</small><strong>${highlightText(item.enablement)}</strong></div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a class="doc-link" href="${item.url}" target="_blank" rel="noopener">Official SAP Documentation <svg class="ui-icon" style="display:inline-block;width:13px;height:13px;vertical-align:-2px" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7"></path><path d="M10 14 21 3"></path><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"></path></svg></a>
+      <button class="more-btn" type="button">Details <svg class="ui-icon details-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></button>
+    </div>
+  </article>`;
+}
 
-                let moduleText = item.module === 'Extra Enhancements' && currentLang === 'es' ? 'Mejoras Extra' : item.module;
-                if (item.module === 'Extra Enhancements' && item.subModulesEn) {
-                    moduleText += ` • <span class="text-gray-500 dark:text-gray-400 font-medium">${currentLang === 'en' ? item.subModulesEn : item.subModulesEs}</span>`;
-                }
 
-                const cardHTML = `
-                    <div onclick="openModal(${item.id})" class="bg-white dark:bg-mapfre-cardDark rounded-xl p-4 md:p-5 shadow-sm border border-gray-100 dark:border-gray-700 card-hover flex flex-col h-full cursor-pointer transition-all duration-300 group animate-fade-in" style="opacity: 0; animation-delay: ${index * 0.04}s">
-                        <div class="flex justify-between items-start mb-2 gap-2">
-                            <span class="text-xs font-bold text-mapfre-red dark:text-red-400 uppercase tracking-wider">${moduleText}</span>
-                            <span class="tag whitespace-nowrap shrink-0 ${typeColor}" title="${typeTooltip}">
-                                <i class="fa-solid ${typeIcon} mr-1"></i> ${typeText}
-                            </span>
-                        </div>
-                        
-                        <h3 class="text-base font-bold mb-2 text-gray-900 dark:text-white leading-tight">${title}</h3>
-                        
-                        <div class="mt-auto pt-2 flex justify-between items-center w-full">
-                            ${criticalBadge}
-                            <div class="flex items-center text-sm font-semibold text-mapfre-red dark:text-red-400 ml-auto">
-                                <span>${btnReadMoreText}</span>
-                                <i class="fa-solid fa-arrow-right ml-1.5 transform group-hover:translate-x-1 transition-transform duration-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                container.innerHTML += cardHTML;
-            });
-        }
+function bindCardButtons(){
+  document.querySelectorAll('.more-btn').forEach(btn => btn.addEventListener('click', () => {
+    const card = btn.closest('.release-card');
+    card.classList.toggle('open');
+    btn.innerHTML = card.classList.contains('open')
+      ? 'Details <svg class="ui-icon details-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"></path></svg>'
+      : 'Details <svg class="ui-icon details-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>';
+  }));
+}
 
-        function openModal(id) {
-            currentOpenItemId = id;
-            const item = releaseData.find(d => d.id === id);
-            if (!item) return;
+let manualThemeOverride = null;
+const colorSchemeQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
-            const title = currentLang === 'en' ? item.titleEn : item.titleEs;
-            const desc = currentLang === 'en' ? item.descEn : item.descEs;
-            const impact = currentLang === 'en' ? item.impactEn : item.impactEs;
-            
-            let typeText = item.type;
-            if (currentLang === 'es') {
-                typeText = item.type === 'New' ? uiDict.es.typeNew : uiDict.es.typeChanged;
-            }
+function setTheme(theme){
+  document.documentElement.dataset.theme = theme;
+  const icon = document.getElementById('themeIcon');
+  const button = document.getElementById('themeToggle');
+  if (!icon || !button) return;
+  const isDark = theme === 'dark';
+  icon.innerHTML = isDark
+    ? '<g class="theme-fill"><circle cx="12" cy="12" r="5.25"></circle><circle cx="12" cy="2.7" r="1.35"></circle><circle cx="12" cy="21.3" r="1.35"></circle><circle cx="2.7" cy="12" r="1.35"></circle><circle cx="21.3" cy="12" r="1.35"></circle><circle cx="5.45" cy="5.45" r="1.25"></circle><circle cx="18.55" cy="5.45" r="1.25"></circle><circle cx="5.45" cy="18.55" r="1.25"></circle><circle cx="18.55" cy="18.55" r="1.25"></circle></g>'
+    : '<path class="theme-fill" d="M21.55 14.85A9.55 9.55 0 0 1 9.15 2.45a9.5 9.5 0 1 0 12.4 12.4Z"></path>';
+  button.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+  button.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+}
 
-            let moduleText = item.module === 'Extra Enhancements' && currentLang === 'es' ? 'Mejoras Extra' : item.module;
-            if (item.module === 'Extra Enhancements' && item.subModulesEn) {
-                moduleText += ` • <span class="text-gray-500 dark:text-gray-400 font-medium">${currentLang === 'en' ? item.subModulesEn : item.subModulesEs}</span>`;
-            }
+function applySystemTheme(e){
+  if (manualThemeOverride) return;
+  const isDark = e ? e.matches : (colorSchemeQuery && colorSchemeQuery.matches);
+  setTheme(isDark ? 'dark' : 'light');
+}
 
-            const typeColor = item.type === 'New' 
-                ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300' 
-                : 'bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300';
-            const typeIcon = item.type === 'New' ? 'fa-plus' : 'fa-pen-to-square';
-            const typeTooltip = item.type === 'New' ? uiDict[currentLang].tooltipNew : uiDict[currentLang].tooltipChanged;
+// Start from the device/browser theme. The header button provides a temporary manual override.
+applySystemTheme(colorSchemeQuery);
+if (colorSchemeQuery) {
+  if (typeof colorSchemeQuery.addEventListener === 'function') {
+    colorSchemeQuery.addEventListener('change', applySystemTheme);
+  } else if (typeof colorSchemeQuery.addListener === 'function') {
+    colorSchemeQuery.addListener(applySystemTheme);
+  }
+}
 
-            document.getElementById('modalModule').innerHTML = moduleText;
-            document.getElementById('modalType').className = `tag whitespace-nowrap shrink-0 w-fit flex items-center ${typeColor}`;
-            document.getElementById('modalType').innerHTML = `<i class="fa-solid ${typeIcon} mr-1.5"></i> ${typeText}`;
-            document.getElementById('modalType').title = typeTooltip;
-            
-            const modalCritical = document.getElementById('modalCritical');
-            if (item.isCritical) {
-                modalCritical.className = 'tag whitespace-nowrap shrink-0 w-fit flex items-center bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300';
-                modalCritical.innerHTML = `<i class="fa-solid fa-star mr-1.5"></i> ${currentLang === 'en' ? uiDict.en.lblCritical : uiDict.es.lblCritical}`;
-                modalCritical.title = uiDict[currentLang].tooltipCritical;
-                modalCritical.classList.remove('hidden');
-            } else {
-                modalCritical.classList.add('hidden');
-                modalCritical.title = "";
-            }
-            
-            document.getElementById('modalTitle').innerHTML = title;
-            document.getElementById('modalDescTitle').innerText = currentLang === 'en' ? uiDict.en.modalDescLabel : uiDict.es.modalDescLabel;
-            document.getElementById('modalDesc').innerText = desc;
-            document.getElementById('modalImpactLabel').innerText = currentLang === 'en' ? uiDict.en.lblImpact : uiDict.es.lblImpact;
-            document.getElementById('modalImpact').innerText = impact;
-            document.getElementById('modalCloseBtn').innerText = currentLang === 'en' ? uiDict.en.btnClose : uiDict.es.btnClose;
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  manualThemeOverride = nextTheme;
+  setTheme(nextTheme);
+});
 
-            const linkElem = document.getElementById('modalExternalLink');
-            if (item.url) {
-                linkElem.href = item.url;
-                linkElem.style.display = 'flex';
-            } else {
-                linkElem.style.display = 'none';
-            }
+// Controls
+document.querySelectorAll('#moduleToggle button').forEach(b => b.addEventListener('click', () => {
+  state.module = b.dataset.module;
+  document.querySelectorAll('#moduleToggle button').forEach(x => x.classList.toggle('active', x === b));
+  render();
+}));
+document.getElementById('searchInput').addEventListener('input', e => { state.search = e.target.value; render(); });
 
-            const modal = document.getElementById('featureModal');
-            const modalContent = document.getElementById('featureModalContent');
-            
-            // Compensar scrollbar para evitar salto visual de layout sin ocultarla abruptamente
-            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-            if (scrollbarWidth > 0) {
-                document.body.style.paddingRight = scrollbarWidth + 'px';
-            }
-            document.body.style.overflow = 'hidden';
-
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                modalContent.classList.remove('scale-95');
-                modalContent.classList.add('scale-100');
-            }, 10);
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('featureModal');
-            const modalContent = document.getElementById('featureModalContent');
-            
-            modal.classList.add('opacity-0');
-            modalContent.classList.remove('scale-100');
-            modalContent.classList.add('scale-95');
-            
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                document.body.style.overflow = '';
-                document.body.style.paddingRight = '';
-            }, 250);
-        }
-
-        function closeModalOnOutsideClick(event) {
-            if (event.target.id === 'featureModal') {
-                closeModal();
-            }
-        }
-
-        function updateUI() {
-            document.getElementById('headerTitle').innerText = uiDict[currentLang].headerTitle;
-            document.getElementById('headerSubtitle').innerText = uiDict[currentLang].headerSubtitle;
-            document.getElementById('summaryTitle').innerText = uiDict[currentLang].summaryTitle;
-            document.getElementById('summaryText').innerText = uiDict[currentLang].summaryText;
-            document.getElementById('lblPreview').innerText = uiDict[currentLang].lblPreview;
-            document.getElementById('lblProduction').innerText = uiDict[currentLang].lblProduction;
-            document.getElementById('datePreview').innerText = uiDict[currentLang].datePreview;
-            document.getElementById('dateProduction').innerText = uiDict[currentLang].dateProduction;
-            document.getElementById('lblCopy').innerText = uiDict[currentLang].lblCopy;
-            
-            document.getElementById('searchInput').placeholder = uiDict[currentLang].searchPlaceholder;
-            document.getElementById('btnExport').title = uiDict[currentLang].tooltipExport;
-            document.getElementById('btnCopySummary').title = uiDict[currentLang].tooltipCopy;
-            document.getElementById('themeBtn').title = uiDict[currentLang].tooltipTheme;
-
-            document.getElementById('lblViewDocs').innerText = uiDict[currentLang].lblViewDocs;
-            
-            // Actualizar etiqueta de idioma flotante con el idioma al que cambiará (ES en inglés, EN en español)
-            document.getElementById('langText').innerText = uiDict[currentLang].btnLang;
-            
-            renderFilters();
-            renderCards();
-        }
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'es' : 'en';
-            updateUI();
-        }
-
-        function updateThemeIcon() {
-            const icon = document.getElementById('themeIcon');
-            
-            if (document.documentElement.classList.contains('dark')) {
-                icon.classList.remove('fa-cloud-sun');
-                icon.classList.add('fa-cloud-moon');
-            } else {
-                icon.classList.remove('fa-cloud-moon');
-                icon.classList.add('fa-cloud-sun');
-            }
-        }
-
-        function initTheme() {
-            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-            updateThemeIcon();
-            
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-                if (!localStorage.theme) {
-                    if (e.matches) {
-                        document.documentElement.classList.add('dark');
-                    } else {
-                        document.documentElement.classList.remove('dark');
-                    }
-                    updateThemeIcon();
-                }
-            });
-        }
-
-        function toggleTheme() {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            }
-            updateThemeIcon();
-        }
-        
-        function exportToCSV() {
-            if (!currentFilteredData || currentFilteredData.length === 0) return;
-            
-            let csvContent = "data:text/csv;charset=utf-8,\uFEFF"; 
-            
-            const headers = currentLang === 'en' 
-                ? ["Module", "Type", "Critical", "Title", "Description", "Business Impact", "URL"]
-                : ["Módulo", "Tipo", "Crítico", "Título", "Descripción", "Impacto en Negocio", "URL"];
-            csvContent += headers.join(",") + "\r\n";
-            
-            currentFilteredData.forEach(item => {
-                const title = currentLang === 'en' ? item.titleEn : item.titleEs;
-                const desc = currentLang === 'en' ? item.descEn : item.descEs;
-                const impact = currentLang === 'en' ? item.impactEn : item.impactEs;
-                let typeText = item.type;
-                if (currentLang === 'es') {
-                    typeText = item.type === 'New' ? uiDict.es.typeNew : uiDict.es.typeChanged;
-                }
-                const critical = item.isCritical ? (currentLang === 'en' ? "Yes" : "Sí") : "No";
-                
-                const row = [
-                    `"${item.module}"`,
-                    `"${typeText}"`,
-                    `"${critical}"`,
-                    `"${title.replace(/"/g, '""')}"`,
-                    `"${desc.replace(/"/g, '""')}"`,
-                    `"${impact.replace(/"/g, '""')}"`,
-                    `"${item.url || ''}"`
-                ];
-                csvContent += row.join(",") + "\r\n";
-            });
-            
-            const encodedUri = encodeURI(csvContent);
-            const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
-            link.setAttribute("download", `MAPFRE_SAP_SFSF_2H2026_${currentLang}.csv`);
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        function copySummary() {
-            if (!currentOpenItemId) return;
-            const item = releaseData.find(d => d.id === currentOpenItemId);
-            if (!item) return;
-
-            const title = currentLang === 'en' ? item.titleEn : item.titleEs;
-            const desc = currentLang === 'en' ? item.descEn : item.descEs;
-            const impact = currentLang === 'en' ? item.impactEn : item.impactEs;
-            
-            const summaryText = `[MAPFRE] SAP SuccessFactors 2H 2026 Release\n\nFeature: ${title}\n\n${currentLang === 'en' ? 'Description' : 'Descripción'}:\n${desc}\n\n${currentLang === 'en' ? 'Business Impact' : 'Impacto en el Negocio'}:\n${impact}\n\nURL: ${item.url || 'N/A'}`;
-            
-            const textArea = document.createElement("textarea");
-            textArea.value = summaryText;
-            textArea.style.top = "0";
-            textArea.style.left = "0";
-            textArea.style.position = "fixed";
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-
-            try {
-                document.execCommand('copy');
-                const icon = document.getElementById('copyIcon');
-                icon.className = 'fa-solid fa-check text-emerald-500 text-lg';
-                const btn = document.getElementById('btnCopySummary');
-                btn.title = uiDict[currentLang].tooltipCopied;
-                
-                setTimeout(() => {
-                    icon.className = 'fa-regular fa-copy';
-                    btn.title = uiDict[currentLang].tooltipCopy;
-                }, 2000);
-            } catch (err) {
-                console.error('Oops, unable to copy', err);
-            }
-            document.body.removeChild(textArea);
-        }
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            initTheme();
-            updateUI();
-        });
-    </script>
+render();
+</script>
 </body>
 </html>
